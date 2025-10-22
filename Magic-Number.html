@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/head.css">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap"
+			rel="stylesheet">
+			<title>扩展名小工具</title>
+	</head>
+	<body>
+		<div class="background-container">
+			<div class="background-image bg-image-1"></div>
+			<div class="background-image bg-image-2"></div>
+			<div class="background-image bg-image-3"></div>
+		</div>
+		
+		<nav class="navbar">
+			<div class="nav-container">
+				<div class="logo-container">
+					<a href="index.html" class="logo-text">扩展名工具</a>
+				</div>
+				<ul class="nav-links">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="Magic-Number.html">扩展名小工具</a></li>
+					<li><a href="r18.html">r18补丁专区</a></li>
+					<li><a href="html.html">网址合集</a></li>
+					<li><a href="version.html">版本信息</a></li>
+				</ul>
+				<button class="mobile-menu-btn">☰</button>
+			</div>
+		</nav>
+		
+		<div class="page-container">
+			<h2 class="tool-title">文件格式检测工具</h2>
+			<p class="tool-description">
+				<span>上传被修改扩展名的文件，通过分析二进制文件头识别其真实格式。</span><br />
+				<span>本工具支持主流压缩格式、多媒体格式及文档格式的识别。</span><br />
+				<span class="highlight">操作前请务必备份原始文件，以防数据损坏。</span><br />
+				<span>支持的格式分类如下：</span><br />
+				<span class="highlight">归档格式：</span>ZIP, RAR, 7Z, GZIP, BZIP2, TAR<br />
+				<span class="highlight">可执行文件：</span>EXE, MSI, ELF, CLASS<br />
+				<span class="highlight">图像格式：</span>PNG, JPEG, GIF, BMP, TIFF, WEBP<br />
+				<span class="highlight">文档格式：</span>PDF, RTF, DOCX, PPTX, XML<br />
+				<span class="highlight">音频编码：</span>MP3, WAV, M4A, AU, FLAC<br />
+				<span class="highlight">视频容器：</span>MP4, AVI, MOV, FLV, 3GP<br />
+				<span class="highlight">游戏资源：</span>XP3, SWF, UPK, PAK, BSF, VPK, GRP, 3DS, CIA, NES, GBA等<br />
+				<span>特别针对galgame引擎文件格式进行了优化，包括：Kirikiri引擎(XP3)、XESS格式、Unity
+					Assets、柚子社LZn压缩格式，以及通用游戏资源格式MPQ、BIG、REF等。</span><br />
+				<span class="highlight">技术说明：</span>本工具通过检测文件魔数(Magic
+				Number)进行格式识别。文件加密（如AES加密）会破坏魔数特征，导致识别失败。扩展名修改不影响魔数检测。
+			</p>
+		
+			<div class="file-input-container">
+				<label class="file-input-label" for="fileInput">选择文件</label>
+				<input type="file" id="fileInput" accept="*">
+				<div class="file-status" id="fileStatus">未选择文件</div>
+			</div>
+		
+			<div class="button-container">
+				<button class="btn" id="detectBtn">开始检测</button>
+			</div>
+		
+			<div class="result-area hidden" id="resultArea">
+				<h3 class="result-title" id="resultTitle">检测结果</h3>
+				<p class="result-text" id="resultText"></p>
+			</div>
+		</div>
+		
+		<footer>
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-column">
+						<h4>联系与版权</h4>
+						<address>
+							<p>
+								<strong>作者：</strong>
+								<a href="https://space.bilibili.com/87412647?spm_id_from=333.1007.0.0"
+									target="_blank">bilibili月が綺麗ですね_</a>
+								<br>
+								<strong>联系方式：</strong>
+								<a href="mailto:3099637681@qq.com" target="_blank">3099637681@qq.com</a>（QQ同号）
+								<br>
+								如有新功能建议或问题反馈，欢迎联系（请注明来意）。
+							</p>
+						</address>
+						<section aria-label="投稿与版权说明">
+							<ul>
+								<li>若您希望投稿补丁内容，欢迎将游戏的详细信息及相关压缩包/安装包发送至上述邮箱，我将尽快更新。</li>
+								<li>若内容存在侵权问题，请及时联系我删除。我将立即移除本站的HTML版本。请注意，已分发的单机版HTML文件不在我的持续更新范围内，但会确保后续分发的版本不包含侵权内容。
+								</li>
+							</ul>
+						</section>
+						<p>
+							<small>
+								Copyright © <span id="copyright-year">2025</span> bilibili 月が綺麗ですね_. All Rights
+								Reserved.
+								<br>
+								本作品采用
+								<a href="license.html" title="查看MIT许可证" class="license-link" target="_blank">MIT许可证</a>
+								发布。
+								<br>
+								本网站收录的所有补丁、应用等链接内容，其版权均归属原版权方所有。本网站仅作学习交流之用，禁止任何商业用途。
+							</small>
+						</p>
+						<p class="i18n-annotation">
+							<small>（法律条款以英文版 "<a href="license.html" target="_blank">LICENSE</a>" 文件为准）</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+				const navLinks = document.querySelector('.nav-links');
+		
+				if (mobileMenuBtn && navLinks) {
+					mobileMenuBtn.addEventListener('click', function() {
+						navLinks.classList.toggle('active');
+		
+						const isActive = navLinks.classList.contains('active');
+						mobileMenuBtn.textContent = isActive ? '✕' : '☰';
+					});
+				}
+			});
+		
+			const backToTopBtn = document.getElementById('backToTopBtn');
+		
+			/*识别文件格式js块开始*/
+			const HIGH_PRIORITY_SIGNATURES = {
+				'ZIP': ['504B0304'],
+				'RAR': ['526172211A0700', '526172211A070100', '52617221'],
+				'7Z': ['377ABCAF271C', '377ABCAF271B'],
+				'GZIP': ['1F8B08'],
+				'BZIP2': ['425A68'],
+				'TAR': ['7573746172'],
+				'XP3': ['585033', '58503320', '5850335F', '58503321', '5850332B', '5850332D', '5850330D0A'],
+				'XESS': ['58455353', '414F5320', '58455353210A', '5845535300FF', '454E5449', '4152544D'],
+				'YUZU_LZN': ['414C4C5A', '4C5A3430', '4C5A3530', '4C5A3130'],
+				'NSOS': ['4E534F53'],
+				'GAME': ['47414D45'],
+				'DAT': ['44415400'],
+				'RAGH': ['52414748'],
+				'UNITY': ['556E697479', '554E5442', '554E5459'],
+				'ALLZ': ['414C4C5A'],
+				'XP4': ['585034'],
+				'KiriKiri-arc': ['41524300'],
+				'spt': ['53505400'],
+				'scn': ['53434E00'],
+				'ONS-grp': ['47525000'],
+				'rld': ['524C4400'],
+				'Key-arc': ['4B455900'],
+				'Yuzu-pak': ['595A504B'],
+				'TypeMoon-dat': ['54595045'],
+				'August-arc': ['41554700']
+			};
+			const OTHER_SIGNATURES = {
+				'EXE': ['4D5A'],
+				'MSI': ['D0CF11E0A1B11AE1'],
+				'ELF': ['7F454C46'],
+				'CLASS': ['CAFEBABE'],
+				'PNG': ['89504E47'],
+				'JPEG': ['FFD8FFE0', 'FFD8FFE1', 'FFD8FFE2', 'FFD8FFE3', 'FFD8FF'],
+				'GIF': ['47494638'],
+				'BMP': ['424D'],
+				'TIFF': ['49492A00', '4D4D002A'],
+				'WEBP': ['52494646'],
+				'PDF': ['25504446'],
+				'RTF': ['7B5C727466'],
+				'DOCX': ['504B030414000600'],
+				'XLSX': ['504B030414000600'],
+				'PPTX': ['504B030414000600'],
+				'XML': ['3C3F786D6C'],
+				'MP3': ['FFFB', '494433'],
+				'WAV': ['52494646', '57617665'],
+				'M4A': ['667479704D3441'],
+				'AU': ['2E736E64', '646E732E'],
+				'FLAC': ['664C6143'],
+				'MP4': ['6674797069736F6D', '667479704D534E56'],
+				'AVI': ['41564920'],
+				'MOV': ['6D6F6F76'],
+				'FLV': ['464C56'],
+				'3GP': ['0000001466747970336770'],
+				'PSD': ['38425053'],
+				'BIG': ['46494E46'],
+				'MPQ': ['4D50511A', '4D50513A'],
+				'ERF': ['45524620'],
+				'RPF': ['52504638'],
+				'PKG_PS3': ['7F504B47'],
+				'PUP': ['534345'],
+				'XBE': ['584245'],
+				'XEX': ['584558'],
+				'NDS': ['4E4453'],
+				'CIA': ['30313030', '20203030'],
+				'GBA': ['47424124'],
+				'SAV': ['534156'],
+				'SIMS3PACK': ['53494D53'],
+				'WOTREPLAY': ['574F5452'],
+				'SWF': ['465753', '465743'],
+				'UPK': ['0550494B'],
+				'PAK': ['50414B', '4C480000', '5A6F12E1', '5041434B', '0043414C', '28040820', '76667331'],
+				'BSP': ['565350'],
+				'VPK': ['56504B34'],
+				'GRP': ['475250'],
+				'3DS': ['4E435344'],
+				'NES': ['4E455331', '4E45531A']
+			};
+			const FORMAT_INFO = {
+				'ZIP': 'ZIP压缩文件格式（通用压缩格式）',
+				'RAR': 'WinRAR压缩文件（高压缩率格式）',
+				'7Z': '7-Zip压缩文件（高压缩比格式）',
+				'GZIP': 'GNU压缩文件（常用于Unix系统）',
+				'BZIP2': 'BZIP2压缩文件（高效压缩算法）',
+				'TAR': 'Unix归档文件（通常与压缩算法结合使用）',
+				'XP3': '吉里吉里引擎容器（常见于多数galgame）',
+				'XP4': '吉里吉里新版容器格式',
+				'KiriKiri-arc': '吉里吉里旧版资源包',
+				'spt': '吉里吉里脚本文件',
+				'scn': 'NScripter/ONScripter脚本文件',
+				'ONS-grp': 'ONScripter资源包',
+				'rld': 'Key社RealLive引擎文件',
+				'Key-arc': 'Key社自定义资源包',
+				'YUZU_LZN': '柚子社压缩文件（如《魔女的夜宴》等作品）',
+				'Yuzu-pak': '柚子社资源包',
+				'TypeMoon-dat': '型月作品数据文件',
+				'August-arc': '八月社资源包',
+				'XESS': '特定galgame引擎加密文件',
+				'NSOS': 'Nekopara系列专用格式',
+				'GAME': '通用游戏数据文件',
+				'DAT': '旧型游戏数据文件',
+				'RAGH': 'Reallive引擎资源文件',
+				'UNITY': 'Unity引擎资源文件（常用于现代galgame）',
+				'ALLZ': '通用游戏资源压缩文件',
+				'EXE': 'Windows可执行文件',
+				'MSI': 'Windows安装程序包',
+				'ELF': 'Unix/Linux可执行文件',
+				'CLASS': 'Java类文件',
+				'PNG': '便携式网络图形（无损图像格式）',
+				'JPEG': 'JPEG图像文件（有损压缩图像）',
+				'GIF': '图形交换格式（支持动画）',
+				'BMP': '位图图像文件（未压缩图像）',
+				'TIFF': '标签图像文件格式（常用于印刷）',
+				'WEBP': 'WebP图像（现代高效图像格式）',
+				'PDF': '便携式文档格式',
+				'RTF': '富文本格式',
+				'DOCX': 'Microsoft Word文档',
+				'XLSX': 'Microsoft Excel表格',
+				'PPTX': 'Microsoft PowerPoint演示文稿',
+				'XML': '可扩展标记语言',
+				'MP3': 'MP3音频文件',
+				'WAV': 'WAV音频文件（无损）',
+				'M4A': 'MPEG-4音频文件',
+				'AU': 'AU音频文件',
+				'FLAC': 'FLAC无损音频文件',
+				'MP4': 'MP4视频文件',
+				'AVI': 'AVI视频文件',
+				'MOV': 'QuickTime视频文件',
+				'FLV': 'Flash视频文件',
+				'3GP': '3GP移动视频格式',
+				'PSD': 'Photoshop文档',
+				'BIG': '游戏资源容器文件',
+				'MPQ': '暴雪游戏资源包',
+				'ERF': 'BioWare游戏资源文件',
+				'RPF': 'Rockstar游戏资源文件',
+				'PKG_PS3': 'PS3游戏安装包',
+				'PUP': 'PS3系统更新文件',
+				'XBE': 'Xbox可执行文件',
+				'XEX': 'Xbox 360可执行文件',
+				'NDS': 'NDS游戏ROM',
+				'CIA': '3DS安装包',
+				'GBA': 'GBA游戏ROM',
+				'SAV': '游戏存档文件',
+				'SIMS3PACK': '模拟人生3扩展包',
+				'WOTREPLAY': '坦克世界回放文件',
+				'SWF': 'Flash动画文件',
+				'UPK': 'Unreal引擎资源包',
+				'PAK': '通用游戏资源包',
+				'BSP': '游戏地图文件',
+				'VPK': 'Source引擎资源包',
+				'GRP': '游戏资源包',
+				'3DS': '3DS游戏ROM',
+				'NES': 'NES游戏ROM'
+			};
+		
+			function arrayBufferToHex(buffer) {
+				return Array.from(new Uint8Array(buffer))
+					.map(b => b.toString(16).padStart(2, '0'))
+					.join('');
+			}
+		
+			function getFileHeader(file, bytes = 128) {
+				return new Promise((resolve, reject) => {
+					const reader = new FileReader();
+					const blob = file.slice(0, bytes);
+					reader.onload = () => resolve(reader.result);
+					reader.onerror = reject;
+					reader.readAsArrayBuffer(blob);
+				});
+			}
+		
+			function secondSniff(format, hex) {
+				if (format === 'XP3') {
+					if (hex.slice(0, 6) === '585033' && ['00', '20', '5F', '21', '2B', '2D'].includes(hex.slice(6, 8))) {
+						return `XP3-GalContainer(v${hex.slice(8,10)})`;
+					}
+				}
+		
+				if (format === 'Yuzu-pak') {
+					for (let i = 0; i < 64; i++) {
+						if (hex.slice(i * 2, i * 2 + 8) === '595A504B') {
+							return 'Yuzu-Encrypted-PAK';
+						}
+					}
+				}
+		
+				if (format === 'UNITY') {
+					const asciiStr = Array.from(new Uint8Array(hexToUint8Array(hex.slice(16, 100))),
+						b => String.fromCharCode(b)).join('');
+		
+					if (asciiStr.includes('UnityWebData1.0')) {
+						return 'Unity-WebAsset';
+					}
+					if (asciiStr.includes('UnityRaw')) {
+						return 'Unity-RawAsset';
+					}
+		
+					const versionMatch = asciiStr.match(/\d+\.\d+\.\d+/);
+					if (versionMatch) {
+						return `Unity-Asset(v${versionMatch[0]})`;
+					}
+				}
+		
+				if (format === 'ZIP') {
+					if (hex.slice(8, 10) === '0A') {
+						return 'ZIP-Empty';
+					}
+					if (hex.slice(8, 12) === '1400') {
+						return 'ZIP-Archive';
+					}
+				}
+		
+				const asciiStr = Array.from(new Uint8Array(hexToUint8Array(hex.slice(0, 48))),
+					b => String.fromCharCode(b)).join('');
+				if (asciiStr.includes('KAG3')) return 'KiriKiri-Script-Enhanced';
+				if (asciiStr.includes('ONS')) return 'ONScripter-File-Confirmed';
+		
+				return format;
+			}
+		
+			function hexToUint8Array(hex) {
+				const arr = new Uint8Array(hex.length / 2);
+				for (let i = 0; i < hex.length; i += 2) {
+					arr[i / 2] = parseInt(hex.slice(i, i + 2), 16);
+				}
+				return arr;
+			}
+		
+			function isHighEntropy(hex) {
+				const bytes = hexToUint8Array(hex);
+				const counts = new Array(256).fill(0);
+				bytes.forEach(b => counts[b]++);
+		
+				let entropy = 0;
+				for (const count of counts) {
+					if (count === 0) continue;
+					const p = count / bytes.length;
+					entropy -= p * Math.log2(p);
+				}
+				return entropy > 7.5;
+			}
+		
+			async function detectFileFormat(file) {
+				try {
+					const headerBuffer = await getFileHeader(file, 128);
+					const hex = arrayBufferToHex(headerBuffer).toUpperCase();
+		
+					for (const [format, signatures] of Object.entries(HIGH_PRIORITY_SIGNATURES)) {
+						for (const sig of signatures) {
+							if (hex.startsWith(sig.toUpperCase())) {
+								const refinedFormat = secondSniff(format, hex);
+								return {
+									format: refinedFormat,
+									info: FORMAT_INFO[format] || '高优先级文件格式'
+								};
+							}
+						}
+					}
+		
+					for (const [format, signatures] of Object.entries(OTHER_SIGNATURES)) {
+						for (const sig of signatures) {
+							if (hex.startsWith(sig.toUpperCase())) {
+								return {
+									format,
+									info: FORMAT_INFO[format] || '通用文件格式'
+								};
+							}
+						}
+					}
+		
+					if (isHighEntropy(hex)) {
+						return {
+							format: '未知格式',
+							info: '可能为加密文件或特殊格式，建议尝试专用工具'
+						};
+					}
+		
+					return {
+						format: '未知格式',
+						info: '未匹配到已知格式签名'
+					};
+				} catch (error) {
+					throw new Error(`检测失败: ${error.message}`);
+				}
+			}
+		
+			document.addEventListener('DOMContentLoaded', () => {
+				const fileInput = document.getElementById('fileInput');
+				const fileStatus = document.getElementById('fileStatus');
+				const detectBtn = document.getElementById('detectBtn');
+				const resultArea = document.getElementById('resultArea');
+				const resultTitle = document.getElementById('resultTitle');
+				const resultText = document.getElementById('resultText');
+				const backToTopBtn = document.getElementById('backToTopBtn');
+				const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+				const navLinks = document.querySelector('.nav-links');
+		
+				fileInput.addEventListener('change', (e) => {
+					if (e.target.files.length > 0) {
+						fileStatus.textContent =
+							`已选择: ${e.target.files[0].name} (${formatFileSize(e.target.files[0].size)})`;
+					} else {
+						fileStatus.textContent = '未选择文件';
+					}
+				});
+		
+				detectBtn.addEventListener('click', async () => {
+					if (!fileInput.files.length) {
+						showResult('错误', '请先选择文件', 'error');
+						return;
+					}
+		
+					const file = fileInput.files[0];
+					detectBtn.disabled = true;
+					detectBtn.textContent = '检测中...';
+					showResult('', '', 'hidden');
+		
+					try {
+						const result = await detectFileFormat(file);
+						showResult(
+							'检测成功',
+							`文件 "${file.name}" 的真实格式为: ${result.format}（${result.info}）`,
+							'success'
+						);
+					} catch (error) {
+						showResult('检测失败', error.message, 'error');
+					} finally {
+						detectBtn.disabled = false;
+						detectBtn.textContent = '开始检测';
+					}
+				});
+		
+				function showResult(title, text, type) {
+					resultArea.className = 'result-area ' + type;
+					resultTitle.textContent = title;
+					resultText.textContent = text;
+				}
+		
+				function formatFileSize(bytes) {
+					if (bytes < 1024) return bytes + ' B';
+					if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
+					return (bytes / 1048576).toFixed(2) + ' MB';
+				}
+			});
+			/*识别文件js块结束*/
+		</script>
+	</body>
+</html>
