@@ -17,19 +17,22 @@
 			}
 
 			.lang-btn {
-				padding: 8px 16px;
+				padding: 10px 20px;
 				background: #f0f0f0;
 				border: 2px solid #ddd;
 				border-radius: 4px;
 				cursor: pointer;
 				font-weight: bold;
+				font-weight: 600;
 				transition: all 0.3s ease;
+				font-family: 'Montserrat', sans-serif;
 			}
 
 			.lang-btn.active {
-				background: #e74c3c;
-				color: white;
-				border-color: #e74c3c;
+				background: var(--accent-color);
+				    color: #121212;
+				    transform: translateY(-2px);
+				    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 			}
 
 			.lang-btn:hover:not(.active) {
@@ -183,6 +186,7 @@
 			    gap: 10px;
 			    width: 100%;
 			    text-align: center;
+				margin-top: 80px;
 			}
 			
 			@media (max-width: 768px) {
@@ -214,13 +218,15 @@
 				<ul class="nav-links">
 					<li><a href="index.html">首页</a></li>
 					<li><a href="Magic-Number.html">扩展名小工具</a></li>
-					<li><a href="r18.html">r18补丁专区</a></li>
+					<li><a href="QA.html">网页说明</a></li>
 					<li><a href="html.html">网址合集</a></li>
 					<li><a href="version.html">版本信息</a></li>
 				</ul>
 				<button class="mobile-menu-btn">☰</button>
 			</div>
 		</nav>
+		
+		<div class="header-placeholder"></div>
 		
 		<div class="header">
 			<button id="lang-zh" class="lang-btn active">中文</button>
@@ -528,7 +534,27 @@
 
 			// 页面加载完成后初始化
 			document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+			
+			// 更新顶部操作栏占位符高度
+			function updateHeaderPlaceholder() {
+			    const navbar = document.querySelector('.navbar');
+			    const placeholder = document.querySelector('.header-placeholder');
+			    const header = document.querySelector('.header');
+			
+			    if (navbar && placeholder && header) {
+			        // 计算导航栏高度 + 语言选择器区域高度 + 缓冲
+			        const navbarHeight = navbar.offsetHeight;
+			        const headerHeight = header.offsetHeight;
+			        const totalHeight = navbarHeight + headerHeight + 20; // 20px缓冲
+			        
+			        placeholder.style.height = `${totalHeight}px`;
+			    }
+			}
+			
+			// 页面加载和窗口大小变化时更新占位符
+			window.addEventListener('DOMContentLoaded', updateHeaderPlaceholder);
+			window.addEventListener('resize', updateHeaderPlaceholder);
+			
 		</script>
 	</body>
-
 </html>
