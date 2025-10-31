@@ -9,6 +9,156 @@
 			rel="stylesheet">
 		<title>主页</title>
 	</head>
+	<style>
+		.slider-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			position: relative;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+			background-color: rgba(30, 30, 30, 0.8);
+		}
+
+		.slider {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+			height: 500px;
+		}
+
+		.slide {
+			min-width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			position: relative;
+		}
+
+		.slide-content {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 30px;
+			background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+			color: var(--text-color);
+		}
+
+		.slide-content h3 {
+			font-size: 2rem;
+			margin-bottom: 10px;
+		}
+
+		.slide-content p {
+			color: var(--text-secondary);
+		}
+
+		.slider-nav {
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			z-index: 10;
+		}
+
+		.slider-dot {
+			width: 12px;
+			height: 12px;
+			background-color: rgba(255, 255, 255, 0.5);
+			border-radius: 50%;
+			margin: 0 8px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.slider-dot.active {
+			background-color: var(--accent-color);
+		}
+
+		.slider-btn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background-color: rgba(0, 0, 0, 0.5);
+			color: var(--text-color);
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.5rem;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			border: none;
+			z-index: 10;
+		}
+
+		.slider-btn:hover {
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+
+		.prev-btn {
+			left: 20px;
+		}
+
+		.next-btn {
+			right: 20px;
+		}
+
+		/* 响应式调整 */
+		@media (max-width: 992px) {
+			.slider {
+				height: 400px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.slider {
+				height: 350px;
+			}
+
+			.slider-btn {
+				width: 40px;
+				height: 40px;
+				font-size: 1.2rem;
+			}
+
+			.slide-content {
+				padding: 20px;
+			}
+
+			.slide-content h3 {
+				font-size: 1.8rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.slider {
+				height: 250px;
+			}
+
+			.slider-btn {
+				width: 35px;
+				height: 35px;
+				font-size: 1rem;
+			}
+
+			.slide-content {
+				padding: 15px;
+			}
+
+			.slide-content h3 {
+				font-size: 1.5rem;
+			}
+
+			.slider-nav {
+				bottom: 10px;
+			}
+		}
+	</style>
 	<body>
 		<div class="background-container">
 			<div class="background-image bg-image-1"></div>
@@ -35,7 +185,54 @@
 		<section class="hero">
 			<div class="container">
 				<h1 data-lang="welcome">欢迎来到绅士的网站</h1>
-				<h5>V1.0.2</h5>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<div class="slider-container">
+					<div class="slider">
+						<div class="slide">
+							<a href="https://nekopara.com/cn" target="_blank">
+								<img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3655150/faf50f4be200ed9e0996a54ed5db39c12e524002/header.jpg?t=1751355043"
+									style="width:100%;height:100%;object-fit:cover;">
+								<div class="slide-content">
+									<h3>NEKOPARA官网</h3>
+								</div>
+							</a>
+						</div>
+						<div class="slide">
+							<a href="https://www.ymgal.games/index" target="_blank">
+								<img src="https://img0.baidu.com/it/u=3254848927,1756117539&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281"
+									style="width:100%;height:100%;object-fit:cover;">
+								<div class="slide-content">
+									<h3>月幕GALGAME</h3>
+								</div>
+							</a>
+						</div>
+						<div class="slide">
+							<a href="https://steamgalgame.com/#google_vignette" target="_blank">
+								<img src="https://img1.baidu.com/it/u=1919118958,3105429441&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500"
+									style="width:100%;height:100%;object-fit:cover;">
+								<div class="slide-content">
+									<h3>STEAMGALGAME</h3>
+								</div>
+							</a>
+						</div>
+					</div>
+					<button class="slider-btn prev-btn">❮</button>
+					<button class="slider-btn next-btn">❯</button>
+					<div class="slider-nav">
+						<div class="slider-dot active"></div>
+						<div class="slider-dot"></div>
+						<div class="slider-dot"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="hero">
+			<div class="container">
 				<h3>网站说明：</h3>
 				<h4>为了尽可能的保证资源的安全性，本网页提供的资源统一采用压缩包的形式。下载后请先解压（手机专区提供apk除外)，可能会有多重压缩的形式，请解压缩到文件形式即可，遇到一些.jpg的删掉.jpg即可
 				</h4>
@@ -87,7 +284,8 @@
 								<br>
 								如有新功能建议或问题反馈，欢迎联系（请注明来意）。<br />
 								<strong>点击此处前往
-								<a href="https://github.com/thegalgame/galgame" target="_blank">github仓库</a></strong>
+									<a href="https://github.com/thegalgame/galgame"
+										target="_blank">github仓库</a></strong>
 							</p>
 						</address>
 						<section aria-label="投稿与版权说明">
@@ -180,9 +378,121 @@
 
 			// 页面加载后初始化按钮状态
 			window.addEventListener('load', updateButtonVisibility);
+
+			// 轮播图功能
+			document.addEventListener('DOMContentLoaded', function() {
+				// 确保元素存在再执行
+				if (!document.querySelector('.slider')) return;
+
+				const slider = document.querySelector('.slider');
+				const slides = document.querySelectorAll('.slide');
+				const dots = document.querySelectorAll('.slider-dot');
+				const prevBtn = document.querySelector('.prev-btn');
+				const nextBtn = document.querySelector('.next-btn');
+
+				if (!slides.length) return;
+
+				let currentIndex = 0;
+				let slideInterval;
+				let startX = 0;
+				let isDragging = false;
+
+				// 初始化轮播图
+				function initSlider() {
+					slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+					updateDots();
+					startAutoSlide();
+
+					// 添加触摸事件
+					slider.addEventListener('touchstart', handleTouchStart);
+					slider.addEventListener('touchmove', handleTouchMove);
+					slider.addEventListener('touchend', handleTouchEnd);
+				}
+
+				// 触摸事件处理
+				function handleTouchStart(e) {
+					startX = e.touches[0].clientX;
+					isDragging = true;
+					clearInterval(slideInterval);
+				}
+
+				function handleTouchMove(e) {
+					if (!isDragging) return;
+					e.preventDefault();
+				}
+
+				function handleTouchEnd(e) {
+					if (!isDragging) return;
+
+					const endX = e.changedTouches[0].clientX;
+					const diff = startX - endX;
+
+					if (diff > 50) {
+						nextSlide();
+					} else if (diff < -50) {
+						prevSlide();
+					}
+
+					isDragging = false;
+					startAutoSlide();
+				}
+
+				// 更新指示点
+				function updateDots() {
+					dots.forEach((dot, index) => {
+						dot.classList.toggle('active', index === currentIndex);
+					});
+				}
+
+				// 切换到指定幻灯片
+				function goToSlide(index) {
+					currentIndex = index;
+					slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+					updateDots();
+				}
+
+				// 切换到下一张
+				function nextSlide() {
+					currentIndex = (currentIndex + 1) % slides.length;
+					goToSlide(currentIndex);
+				}
+
+				// 切换到上一张
+				function prevSlide() {
+					currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+					goToSlide(currentIndex);
+				}
+
+				// 开始自动轮播
+				function startAutoSlide() {
+					clearInterval(slideInterval);
+					slideInterval = setInterval(nextSlide, 5000);
+				}
+
+				// 事件监听
+				dots.forEach((dot, index) => {
+					dot.addEventListener('click', () => {
+						clearInterval(slideInterval);
+						goToSlide(index);
+						startAutoSlide();
+					});
+				});
+
+				prevBtn.addEventListener('click', () => {
+					clearInterval(slideInterval);
+					prevSlide();
+					startAutoSlide();
+				});
+
+				nextBtn.addEventListener('click', () => {
+					clearInterval(slideInterval);
+					nextSlide();
+					startAutoSlide();
+				});
+
+				// 初始化
+				initSlider();
+			});
 		</script>
 	</body>
-
 </html>
-
-
