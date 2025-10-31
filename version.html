@@ -71,7 +71,7 @@
 				<ul class="nav-links">
 					<li><a href="index.html">首页</a></li>
 					<li><a href="Magic-Number.html">扩展名小工具</a></li>
-					<li><a href="r18.html">r18补丁专区</a></li>
+					<li><a href="QA.html">网页说明</a></li>
 					<li><a href="html.html">网址合集</a></li>
 					<li><a href="version.html">版本信息</a></li>
 				</ul>
@@ -83,6 +83,18 @@
 		<button id="scrollToBottomBtn" class="show">滚到底部</button>
 
 		<div class="header-placeholder"></div>
+		
+		<div class="update-section">
+			<h2 class="version-title">V1.2.0更新内容</h2>
+			<div class="update-date">更新时间：2025/11/1</div>
+			<ul class="version-list">
+				<li>1.删除r18补丁专区页面，将本页所有资源移动到主页</li>
+				<li>2.新增网页说明页面，并将原主页的一些内容移动到本页面</li>
+				<li>3.新增真红小站的网页链接</li>
+				<li>4.将页顶导航栏固定在页面顶端</li>
+				<li>5.修复许可证页面屏幕在一些宽度内页顶可能遮挡切换语言按钮的bug</li>
+			</ul>
+		</div>
 		
 		<div class="update-section">
 			<h2 class="version-title">V1.1.0更新内容</h2>
@@ -212,6 +224,8 @@
 		</footer>
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
+				updateHeaderPlaceholder();
+				
 				const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 				const navLinks = document.querySelector('.nav-links');
 
