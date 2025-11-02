@@ -51,7 +51,7 @@
 		<div class="cd-code-display">
 			<div class="cd-code-header">
 				<div>
-					<h2>投搞代码框架提示</h2>
+					<h2>简单投搞代码框架提示</h2>
 					<p>如果你想直接使用代码投稿可参考以下框架，也支持提供对应下载链接</p>
 				</div>
 			</div>
@@ -68,6 +68,71 @@
 					请注意不要把&quot;&quot;删除，完整的比如：href=&quot;https://pan.baidu.com/xxxxx?pwd=wx33&quot;,投稿时请注意链接是否有&quot;?pwd=&quot;,这个是密钥
 				</p>
 			</div>
+		</div>
+		
+		<div class="cd-code-display">
+		  <div class="cd-code-header">
+		    <div>
+		      <h2>详细投搞代码框架提示</h2>
+		      <p>如果是你懂html代码的专业人士，也可通过下列框架向我投稿资源</p>
+		    </div>
+		  </div>
+		  <div class="cd-code-content">
+		    <p>
+		      添加新分区或新游戏时，只需要在&nbsp; searchData&nbsp; 和&nbsp; manualMap&nbsp; 中各补一条记录即可，流程如下：<br />
+		      示例：你要添加<br />
+		      分区：123分区<br />
+		      游戏：456 和 789<br />
+		      <br />
+		      &lt;section class=&quot;section&quot; id=&quot;section-123&quot;&gt;<br />
+		      &nbsp;&nbsp;&lt;div class=&quot;container&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-section&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;123分区&lt;/h2&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-container&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-item&quot; id=&quot;g_456&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://example.com/456&quot; target=&quot;_blank&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;456&lt;/h3&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;https://example.com/456.jpg&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-item&quot; id=&quot;g_789&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://example.com/789&quot; target=&quot;_blank&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;789&lt;/h3&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;https://example.com/789.jpg&quot;&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+		      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+		      &nbsp;&nbsp;&lt;/div&gt;<br />
+		      &lt;/section&gt;<br />
+		      <br />
+		      第二步：在&nbsp; manualMap&nbsp; 中添加映射<br />
+		      const manualMap = {<br />
+		      &nbsp;&nbsp;// ...原有内容<br />
+		      &nbsp;&nbsp;&#39;123分区&#39;: &#39;section-123&#39;,<br />
+		      };<br />
+		      <br />
+		      第三步：在&nbsp; searchData&nbsp; 中添加分类和游戏<br />
+		      <br />
+		      const searchData = [<br />
+		      &nbsp;&nbsp;// ...原有内容<br />
+		      <br />
+		      &nbsp;&nbsp;// 添加分类<br />
+		      &nbsp;&nbsp;{ id: &#39;c_section123&#39;, name: &#39;123分区&#39;, type: &#39;category&#39;, target: &#39;section-123&#39; },<br />
+		      <br />
+		      &nbsp;&nbsp;// 添加游戏<br />
+		      &nbsp;&nbsp;{ id: &#39;g_456&#39;, name: &#39;456&#39;, type: &#39;game&#39;, target: &#39;section-123&#39; },<br />
+		      &nbsp;&nbsp;{ id: &#39;g_789&#39;, name: &#39;789&#39;, type: &#39;game&#39;, target: &#39;section-123&#39; },<br />
+		      ];<br />
+		      <br />
+		      第四步（可选）：添加别名（如果你想支持模糊搜索)<br />
+		      const aliasMap = {<br />
+		      &nbsp;&nbsp;// ...原有内容<br />
+		      &nbsp;&nbsp;&#39;456&#39;: [&#39;456&#39;, &#39;四五六&#39;],<br />
+		      &nbsp;&nbsp;&#39;789&#39;: [&#39;789&#39;, &#39;七八九&#39;],<br />
+		      };<br />
+		    </p>
+		  </div>
 		</div>
 		
 		<footer>
