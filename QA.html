@@ -46,94 +46,102 @@
 				<h4>当游戏名称旁边带有✳️时，代表该游戏：由于常被ban，已将链接下架，有需要请联系我获取补丁。目前已将所有带✳️的链接更改为我的邮箱链接</h4>
 				<h4>本网站只有一人维护，更新将是不定期的更新方式。</h4>
 			</div>
-		</section>
-		
+		</section>	
+
+		<!-- =========================  简单版  ========================= -->
 		<div class="cd-code-display">
 			<div class="cd-code-header">
 				<div>
-					<h2>简单投搞代码框架提示</h2>
-					<p>如果你想直接使用代码投稿可参考以下框架，也支持提供对应下载链接</p>
+					<h2>简单版投稿框架</h2>
+					<p>零代码基础也能 1 分钟搞定！只要改 3 个地方即可提交一个游戏。如果你想直接投稿链接，也欢迎直接向我投稿</p>
 				</div>
 			</div>
 			<div class="cd-code-content">
-				<p>&lt;div class=&quot;content-item&quot;&gt;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;在此放入你的完整的补丁仓库的链接，只要https的链接&quot;
-					target=&quot;_blank&quot;&gt;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;在此输入你的游戏名字&lt;/h3&gt;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img
-					src=&quot;在这里放入你的游戏图片链接，可通过网页端steam右键点击标题右边的图片，然后复制图像链接，然后将复制结果复制到这里&quot;&gt;<br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;如你愿意的话，也可以在这里写上你的名字，联系方式等，若不需要，则需将此行删除&lt;/h4&gt;<br />
+				<p><strong>步骤提示：</strong></p>
+				<ol>
+					<li><strong>游戏下载链接</strong>：必须是 https:// 开头；百度盘请保留「?pwd=***」这段密码，否则别人打不开。</li>
+					<li><strong>游戏名字</strong>：写中文即可，会显示在页面上。</li>
+					<li><strong>游戏封面图</strong>：打开 Steam 网页 → 在游戏标题右侧封面图「右键-复制图像地址」→ 粘贴过来。（或者其他途径)</li>
+				</ol>
+				<p>把下面代码整块复制，<u><strong>替换3处中文提示</strong></u>，然后发送给管理员即可。</p>
+				<p>
+					&lt;div class=&quot;content-item&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;<u><strong>https://xxx?pwd=xxx</strong></u>&quot; target=&quot;_blank&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;<u><strong>在此输入你的游戏名字</strong></u>&lt;/h3&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;<u><strong>在此放入你的游戏图片链接</strong></u>&quot;&gt;<br />
 					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
-					&lt;/div&gt;<br />
-					请注意不要把&quot;&quot;删除，完整的比如：href=&quot;https://pan.baidu.com/xxxxx?pwd=wx33&quot;,投稿时请注意链接是否有&quot;?pwd=&quot;,这个是密钥
+					&lt;/div&gt;
 				</p>
+				<p><strong>可选做法：</strong>如果想留名，可在 &lt;/a&gt; 之前加<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;投稿人：你的名字/联系方式&lt;/h4&gt;<br />不需要就直接删除整行。</p>
+				<p>请注意不要把&quot;&quot;删除，完整的比如：href=&quot;https://xxxxx?pwd=wx33&quot;</p>
 			</div>
 		</div>
 		
+		<!-- =========================  专业版  ========================= -->
 		<div class="cd-code-display">
-		  <div class="cd-code-header">
-		    <div>
-		      <h2>详细投搞代码框架提示</h2>
-		      <p>如果是你懂html代码的专业人士，也可通过下列框架向我投稿资源</p>
-		    </div>
-		  </div>
-		  <div class="cd-code-content">
-		    <p>
-		      添加新分区或新游戏时，只需要在&nbsp; searchData&nbsp; 和&nbsp; manualMap&nbsp; 中各补一条记录即可，流程如下：<br />
-		      示例：你要添加<br />
-		      分区：123分区<br />
-		      游戏：456 和 789<br />
-		      <br />
-		      &lt;section class=&quot;section&quot; id=&quot;section-123&quot;&gt;<br />
-		      &nbsp;&nbsp;&lt;div class=&quot;container&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-section&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;123分区&lt;/h2&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-container&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-item&quot; id=&quot;g_456&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://example.com/456&quot; target=&quot;_blank&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;456&lt;/h3&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;https://example.com/456.jpg&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-item&quot; id=&quot;g_789&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://example.com/789&quot; target=&quot;_blank&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;789&lt;/h3&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;https://example.com/789.jpg&quot;&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
-		      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
-		      &nbsp;&nbsp;&lt;/div&gt;<br />
-		      &lt;/section&gt;<br />
-		      <br />
-		      第二步：在&nbsp; manualMap&nbsp; 中添加映射<br />
-		      const manualMap = {<br />
-		      &nbsp;&nbsp;// ...原有内容<br />
-		      &nbsp;&nbsp;&#39;123分区&#39;: &#39;section-123&#39;,<br />
-		      };<br />
-		      <br />
-		      第三步：在&nbsp; searchData&nbsp; 中添加分类和游戏<br />
-		      <br />
-		      const searchData = [<br />
-		      &nbsp;&nbsp;// ...原有内容<br />
-		      <br />
-		      &nbsp;&nbsp;// 添加分类<br />
-		      &nbsp;&nbsp;{ id: &#39;c_section123&#39;, name: &#39;123分区&#39;, type: &#39;category&#39;, target: &#39;section-123&#39; },<br />
-		      <br />
-		      &nbsp;&nbsp;// 添加游戏<br />
-		      &nbsp;&nbsp;{ id: &#39;g_456&#39;, name: &#39;456&#39;, type: &#39;game&#39;, target: &#39;section-123&#39; },<br />
-		      &nbsp;&nbsp;{ id: &#39;g_789&#39;, name: &#39;789&#39;, type: &#39;game&#39;, target: &#39;section-123&#39; },<br />
-		      ];<br />
-		      <br />
-		      第四步（可选）：添加别名（如果你想支持模糊搜索)<br />
-		      const aliasMap = {<br />
-		      &nbsp;&nbsp;// ...原有内容<br />
-		      &nbsp;&nbsp;&#39;456&#39;: [&#39;456&#39;, &#39;四五六&#39;],<br />
-		      &nbsp;&nbsp;&#39;789&#39;: [&#39;789&#39;, &#39;七八九&#39;],<br />
-		      };<br />
-		    </p>
-		  </div>
+			<div class="cd-code-header">
+				<div>
+					<h2>专业版投稿框架</h2>
+					<p>一次性新建「123 分区」并投放 456、789 两款游戏，支持搜索与别名。跟着 4 步走，完全照抄也能成功！</p>
+				</div>
+			</div>
+			<div class="cd-code-content">
+				<p><strong>Step-1 新建分区（HTML）</strong><br />
+				把下面整块代码粘到页面最底部，<u><strong>已标红的ID、链接、图片名</strong></u>请换成自己的。</p>
+				<p>
+					&lt;section class=&quot;section&quot; id=&quot;<u><strong>section-123</strong></u>&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;container&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-section&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;<u><strong>123 分区</strong></u>&lt;/h2&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-container&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-item&quot; id=&quot;<u><strong>g_456</strong></u>&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;<u><strong>https://xxx?pwd=xxx</strong></u>&quot; target=&quot;_blank&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;<u><strong>456</strong></u>&lt;/h3&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;<u><strong>https://xxx/456.jpg</strong></u>&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;content-item&quot; id=&quot;<u><strong>g_789</strong></u>&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;<u><strong>https://xxx?pwd=xxx</strong></u>&quot; target=&quot;_blank&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;<u><strong>789</strong></u>&lt;/h3&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src=&quot;<u><strong>https://xxx/789.jpg</strong></u>&quot;&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+					&lt;/section&gt;
+				</p>
+		
+				<p><strong>Step-2 告诉系统有新分区（manualMap）</strong><br />
+				在文件里找到 <code>const manualMap = {</code>，把下面一行粘到末尾，注意最后加英文逗号。</p>
+				<p>
+					&nbsp;&nbsp;&nbsp;&nbsp;'123 分区': '<u><strong>section-123</strong></u>',
+				</p>
+		
+				<p><strong>Step-3 让搜索能索引（searchData）</strong><br />
+				找到 <code>const searchData = [</code>，把下面 3 行粘进去，也要带英文逗号。</p>
+				<p>
+					&nbsp;&nbsp;&nbsp;&nbsp;{ id: '<u><strong>c_section123</strong></u>', name: '<u><strong>123 分区</strong></u>', type: 'category', target: '<u><strong>section-123</strong></u>' },<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;{ id: '<u><strong>g_456</strong></u>', name: '<u><strong>456</strong></u>', type: 'game', target: '<u><strong>section-123</strong></u>' },<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;{ id: '<u><strong>g_789</strong></u>', name: '<u><strong>789</strong></u>', type: 'game', target: '<u><strong>section-123</strong></u>' },
+				</p>
+		
+				<p><strong>Step-4（可选）模糊搜索别名</strong><br />
+				想让玩家搜“四五六”也能找到 456？在 <code>const aliasMap = {</code> 里追加：</p>
+				<p>
+					&nbsp;&nbsp;&nbsp;&nbsp;<u><strong>456</strong></u>: ['四五六', '四五六游戏'],<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;<u><strong>789</strong></u>: ['七八九'],
+				</p>
+		
+				<p><strong>常见坑提醒：</strong></p>
+				<ul>
+					<li>所有链接必须 https:// 开头；百度盘一定保留 ?pwd=*** 这段密码。</li>
+					<li>每行末尾英文逗号别漏，否则整个页面会报错。</li>
+					<li>ID 不要带空格，用下划线或数字都行。</li>
+				</ul>
+			</div>
 		</div>
+
 		
 		<footer>
 			<div class="container">
