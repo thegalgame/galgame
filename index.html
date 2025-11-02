@@ -158,6 +158,144 @@
 				bottom: 10px;
 			}
 		}
+		
+		/* 搜索框样式 */
+		.search-container {
+		    margin-left: 20px;
+		    position: relative;
+		    width: 85vw; 
+		    max-width: 85vw; 
+			align-items: center;
+			margin: 0 auto;
+			padding: 20px 0;
+		}
+		
+		.search-box {
+		    position: relative;
+		    width: 85vw;
+		    max-width: 85vw;
+		}
+		
+		#searchInput {
+		    background-color: rgba(50, 50, 50, 0.8);
+		    border: 1px solid rgba(255, 255, 255, 0.2);
+		    border-radius: 30px;
+		    color: var(--text-color);
+		    padding: 10px 45px 10px 15px;
+		    font-size: 1rem;
+		    width: 100%;
+		    transition: all 0.3s ease;
+		    outline: none;
+		    box-sizing: border-box;
+		}
+		
+		#searchInput:focus {
+		    border-color: var(--accent-color);
+		    box-shadow: 0 0 0 2px rgba(77, 182, 172, 0.2);
+		    
+		}
+		
+		#searchInput::placeholder {
+		    color: var(--text-secondary);
+		}
+		
+		.search-btn {
+		    position: absolute;
+		    right: 10px;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    background: none;
+		    border: none;
+		    color: var(--text-secondary);
+		    cursor: pointer;
+		    padding: 5px;
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    transition: color 0.3s ease;
+		    z-index: 1;
+		}
+		
+		.search-btn:hover {
+		    color: var(--accent-color);
+		}
+		
+		.search-dropdown {
+		    position: absolute;
+		    top: 100%;
+		    left: 0;
+		    width: 100%; 
+		    background-color: rgba(40, 40, 40, 0.95);
+		    border-radius: 8px;
+		    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+		    max-height: 300px;
+		    overflow-y: auto;
+		    display: none;
+		    z-index: 1001;
+		    margin-top: 5px;
+		}
+		
+		.search-dropdown.active {
+		    display: block;
+		}
+		
+		.search-dropdown-item {
+		    padding: 12px 15px;
+		    color: var(--text-secondary);
+		    cursor: pointer;
+		    transition: all 0.3s ease;
+		    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		
+		.search-dropdown-item:last-child {
+		    border-bottom: none;
+		}
+		
+		.search-dropdown-item:hover {
+		    background-color: rgba(80, 80, 80, 0.5);
+		    color: var(--text-color);
+		}
+		
+		.search-dropdown-item.highlight {
+		    background-color: rgba(77, 182, 172, 0.2);
+		    color: var(--text-color);
+		}
+		
+		.search-dropdown-item.no-results {
+		    color: var(--text-secondary);
+		    text-align: center;
+		    cursor: default;
+		    font-style: italic;
+		}
+		
+		.search-dropdown-item.no-results:hover {
+		    background-color: transparent;
+		    color: var(--text-secondary);
+		}
+		
+		/* 移动端适配 */
+		@media (max-width: 900px) {
+		    .search-container {
+		        padding: 15px 0;
+		    }
+		    
+		    .search-box {
+		        width: 85vw;
+		        max-width: 85vw;
+		    }
+		}
+		
+		@media (max-width: 480px) {
+    #searchInput {
+        padding: 8px 40px 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .search-box {
+        width: 85vw;
+        max-width: 85vw;
+    }
+}
 	</style>
 	<body>
 		<div class="background-container">
@@ -180,7 +318,23 @@
 				</ul>
 				<button class="mobile-menu-btn">☰</button>
 			</div>
+			<div class="search-container">
+			    <div class="search-box">
+			        <input type="text" id="searchInput" placeholder="搜索游戏或分类...">
+			        <button id="searchBtn" class="search-btn">
+			            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+			                <circle cx="11" cy="11" r="8"></circle>
+			                <path d="m21 21-4.3-4.3"></path>
+			            </svg>
+			        </button>
+			        <div id="searchDropdown" class="search-dropdown"></div>
+			    </div>
+				<p>目前支持通过义项查找，但是词库可能不全，请尽量使用官方名字搜索</p>
+			</div>
 		</nav>
+		
+		<div class="header-placeholder"></div>
+		<div class="header-placeholder"></div>
 
 		<section class="section">
 			<div class="container">
@@ -241,6 +395,8 @@
 				<a href="QA.html" class="btn" target="_blank">网站常见问题解答</a>
 			</div>
 		</section>
+		
+		
 
 
 		<section class="section">
@@ -249,616 +405,504 @@
 					<h2>点击下载补丁</h2>
 				</div>
 
-				<div class="content-section">
-					<h2>NEKOPARA系列</h2>
-					<h3><a href="https://nekopara.com/cn" target="_blank">nekopara官网</a></h3>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1Mr_LBjrZdA24oDrwFr_Ryw?pwd=8bj1" target="_blank">
-								<h3>NEKOPARA After</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3655150/faf50f4be200ed9e0996a54ed5db39c12e524002/header.jpg?t=1751355043">
-							</a>
-						</div>
-
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1JyY-Q6f4Ga8Wx9c1Ozp_xw?pwd=f3vg" target="_blank">
-								<h3>NEKOPARA Vol_1</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/333600/header.jpg?t=1656892670">
-							</a>
-						</div>
-
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1EDepMfu2RHWFoxX4CkUZJw?pwd=ksqi" target="_blank">
-								<h3>NEKOPARA Vol_2</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/420110/header.jpg?t=1656892360">
-							</a>
-						</div>
-
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1AEiZEaM3yUbHOkQytfJvHQ?pwd=7642" target="_blank">
-								<h3>NEKOPARA Vol_3</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/602520/header.jpg?t=1656892343">
-							</a>
-						</div>
-
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1uO_Jz_-3xrpVVhQtP4GpNw?pwd=fu3e" target="_blank">
-								<h3>NEKOPARA Vol_4</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1406990/header.jpg?t=1750969102">
-							</a>
-						</div>
-					</div>
+				<div class="content-section" id="nekopara">
+				  <h2>NEKOPARA系列</h2>
+				  <h3><a href="https://nekopara.com/cn" target="_blank">nekopara官网</a></h3>
+				  <div class="content-container">
+				    <div class="content-item" id="g_nekopara_after">
+				      <a href="https://pan.baidu.com/s/1Mr_LBjrZdA24oDrwFr_Ryw?pwd=8bj1" target="_blank">
+				        <h3>NEKOPARA After</h3>
+				        <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3655150/faf50f4be200ed9e0996a54ed5db39c12e524002/header.jpg?t=1751355043">
+				      </a>
+				    </div>
+				
+				    <div class="content-item" id="g_nekopara_vol1">
+				      <a href="https://pan.baidu.com/s/1JyY-Q6f4Ga8Wx9c1Ozp_xw?pwd=f3vg" target="_blank">
+				        <h3>NEKOPARA Vol_1</h3>
+				        <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/333600/header.jpg?t=1656892670">
+				      </a>
+				    </div>
+				
+				    <div class="content-item" id="g_nekopara_vol2">
+				      <a href="https://pan.baidu.com/s/1EDepMfu2RHWFoxX4CkUZJw?pwd=ksqi" target="_blank">
+				        <h3>NEKOPARA Vol_2</h3>
+				        <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/420110/header.jpg?t=1656892360">
+				      </a>
+				    </div>
+				
+				    <div class="content-item" id="g_nekopara_vol3">
+				      <a href="https://pan.baidu.com/s/1AEiZEaM3yUbHOkQytfJvHQ?pwd=7642" target="_blank">
+				        <h3>NEKOPARA Vol_3</h3>
+				        <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/602520/header.jpg?t=1656892343">
+				      </a>
+				    </div>
+				
+				    <div class="content-item" id="g_nekopara_vol4">
+				      <a href="https://pan.baidu.com/s/1uO_Jz_-3xrpVVhQtP4GpNw?pwd=fu3e" target="_blank">
+				        <h3>NEKOPARA Vol_4</h3>
+				        <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1406990/header.jpg?t=1750969102">
+				      </a>
+				    </div>
+				  </div>
 				</div>
+
 			</div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>seek girl系列</h2>
-					<h3><a href="https://www.mediafire.com/folder/3q11g9beikhrr/DSGAME#kwi2o5knrv7pb"
-							target="_blank">官方下载链接</a></h3>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/16OGLPKeDxMGYsMgLqr7Yyw?pwd=7m2j" target="_blank">
-								<h3>seek girl</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/998930/header.jpg?t=1732692911">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1gbWpblhI5lJ5KAlrrvugew?pwd=1145" target="_blank">
-								<h3>seek girl 2</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1149660/header.jpg?t=1732693057">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/16NfScgnboFeadL6A47ExmA?pwd=1145" target="_blank">
-								<h3>seek girl 3</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1191210/header.jpg?t=1749225896">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1LZ6WybL6YKY_dT2Sb_rTJw?pwd=5nhc" target="_blank">
-								<h3>seek girl 4</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1212830/header.jpg?t=1732693238">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1aVgFKBjza60PTdEY21aKCA?pwd=1145" target="_blank">
-								<h3>seek girl 5</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1393410/header.jpg?t=1749227211">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1BjwLZjkecqyZIRgU1ilwkg?pwd=1145" target="_blank">
-								<h3>seek girl 6</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1419730/header.jpg?t=1749120017">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1oQ-TPinPjmcFVnocKsb4Ww?pwd=1145" target="_blank">
-								<h3>seek girl 7</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1464930/header.jpg?t=1749228512">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/16NfScgnboFeadL6A47ExmA?pwd=1145" target="_blank">
-								<h3>seek girl 8</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1509090/header.jpg?t=1749229702">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+		<section class="section" id="seek-girl">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>seek girl系列</h2>
+		      <h3><a href="https://www.mediafire.com/folder/3q11g9beikhrr/DSGAME#kwi2o5knrv7pb" target="_blank">官方下载链接</a></h3>
+		      <div class="content-container">
+		        <div class="content-item" id="g_seekgirl_1">
+		          <a href="https://pan.baidu.com/s/16OGLPKeDxMGYsMgLqr7Yyw?pwd=7m2j" target="_blank">
+		            <h3>seek girl</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/998930/header.jpg?t=1732692911">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_2">
+		          <a href="https://pan.baidu.com/s/1gbWpblhI5lJ5KAlrrvugew?pwd=1145" target="_blank">
+		            <h3>seek girl 2</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1149660/header.jpg?t=1732693057">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_3">
+		          <a href="https://pan.baidu.com/s/16NfScgnboFeadL6A47ExmA?pwd=1145" target="_blank">
+		            <h3>seek girl 3</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1191210/header.jpg?t=1749225896">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_4">
+		          <a href="https://pan.baidu.com/s/1LZ6WybL6YKY_dT2Sb_rTJw?pwd=5nhc" target="_blank">
+		            <h3>seek girl 4</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1212830/header.jpg?t=1732693238">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_5">
+		          <a href="https://pan.baidu.com/s/1aVgFKBjza60PTdEY21aKCA?pwd=1145" target="_blank">
+		            <h3>seek girl 5</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1393410/header.jpg?t=1749227211">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_6">
+		          <a href="https://pan.baidu.com/s/1BjwLZjkecqyZIRgU1ilwkg?pwd=1145" target="_blank">
+		            <h3>seek girl 6</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1419730/header.jpg?t=1749120017">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_7">
+		          <a href="https://pan.baidu.com/s/1oQ-TPinPjmcFVnocKsb4Ww?pwd=1145" target="_blank">
+		            <h3>seek girl 7</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1464930/header.jpg?t=1749228512">
+		          </a>
+		        </div>
+		
+		        <div class="content-item" id="g_seekgirl_8">
+		          <a href="https://pan.baidu.com/s/16NfScgnboFeadL6A47ExmA?pwd=1145" target="_blank">
+		            <h3>seek girl 8</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1509090/header.jpg?t=1749229702">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="rhapsody">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>狂想曲系列</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_summer_rhapsody">
+		          <a href="mailto:3099637681@qq.com" target="_blank">
+		            <h3>夏日狂想曲✳️</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1227890/header_schinese.jpg?t=1749385653">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_winter_rhapsody">
+		          <a href="https://pan.baidu.com/s/1gpeH9FmxPbhDNKv_Op3uCg?pwd=y1xa" target="_blank">
+		            <h3>冬日狂想曲</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2495450/header_schinese.jpg?t=1755877347">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="lost">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>lost系列</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_lost_1">
+		          <a href="https://pan.baidu.com/s/1UyQJ3uXAv0ffoHQIvuRSGQ?pwd=1145" target="_blank">
+		            <h3>lost 1</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1126290/header.jpg?t=1749226096">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_lost_2">
+		          <a href="https://pan.baidu.com/s/1MdSmmWMAvNVQrZv_xK3tcg?pwd=1145" target="_blank">
+		            <h3>lost 2</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1930640/header.jpg?t=1749230472">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_lost_find">
+		          <a href="https://pan.baidu.com/s/1oWJjvaQmUl3B3ai1z6sDRg?pwd=1145" target="_blank">
+		            <h3>lost:find</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1801650/header.jpg?t=1729185419">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="suffering">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>苦主系列</h2>
+		      <h3><a href="https://www.mediafire.com/folder/3q11g9beikhrr/DSGAME#kwi2o5knrv7pb" target="_blank">官方下载链接</a></h3>
+		      <div class="content-container">
+		        <div class="content-item" id="g_kuzhu_1">
+		          <a href="https://pan.baidu.com/s/14vLqxslD4Zm2MMOrCvGcfg" target="_blank">
+		            <h3>苦主1</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2078780/header.jpg?t=1749230695">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_kuzhu_3">
+		          <a href="https://pan.baidu.com/s/1ttD-d49Y-a8mQ4V9Ec01iw" target="_blank">
+		            <h3>苦主3</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2307120/header_schinese.jpg?t=1732693943">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="primal-hearts">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>Primal Hearts系列</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_primalhearts_1">
+		          <a href="https://pan.baidu.com/s/1_FyXvUhKqOLnZeCaTNPlMg?pwd=p5s2" target="_blank">
+		            <h3>Primal Hearts</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1359400/header.jpg?t=1747632733">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_primalhearts_2">
+		          <a href="https://pan.baidu.com/s/13SYEEZ5xdCDx4CPTNoVmVg?pwd=iki9" target="_blank">
+		            <h3>Primal Hearts 2</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1368010/header.jpg?t=1747632690">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="miss-neko">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>miss neko系列</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_missneko_1">
+		          <a href="https://pan.baidu.com/s/1jnH1sE--njE7D3mUmnDtYA?pwd=wk83" target="_blank">
+		            <h3>miss neko</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1101450/header.jpg?t=1703481005">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_missneko_2">
+		          <a href="https://pan.baidu.com/s/1jnH1sE--njE7D3mUmnDtYA?pwd=wk83" target="_blank">
+		            <h3>miss neko 2</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1203420/header.jpg?t=1737095118">
+		          </a>
+		          <p>或可WIN+R输入以下代码（此代码将直接运行游戏并安装，此代码暂时无锁国区)<br></p>
+		          <p>steam://run/1777410</p>
+		        </div>
+		        <div class="content-item" id="g_missneko_3">
+		          <a href="https://pan.baidu.com/s/1jnH1sE--njE7D3mUmnDtYA?pwd=wk83" target="_blank">
+		            <h3>miss neko 3</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2022180/header.jpg?t=1703480896">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="sakura-isekai">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>Sakura Isekai Adventure系列</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_sakuraisekai_1">
+		          <a href="https://pan.baidu.com/s/1N_E2TjMXGqCvDNNGNxuDeg?pwd=5w6t" target="_blank">
+		            <h3>Sakura Isekai Adventure 1</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2646050/header.jpg?t=1708972570">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_sakuraisekai_2">
+		          <a href="https://pan.baidu.com/s/1I2w7ItJcl0cUKrtkeVM-IA?pwd=x133" target="_blank">
+		            <h3>Sakura Isekai Adventure 2</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2832790/header.jpg?t=1716227410">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_sakuraisekai_3">
+		          <a href="https://pan.baidu.com/s/1BT_XUzGqyOevn7LbMzxleQ?pwd=hw62" target="_blank">
+		            <h3>Sakura Isekai Adventure 3</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3240500/header.jpg?t=1741026701">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="crossdressing">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>女装系列</h2>
+		      <p><a href="https://erogejapan.com/" target="_blank">官方下载链接</a>统一解压码：114514</p>
+		      <div class="content-container">
+		        <div class="content-item" id="g_nvzhuang_shensha">
+		          <a href="https://pan.baidu.com/s/1XYsuOlGsOsUw9IqcUC0Pww?pwd=1145" target="_blank">
+		            <h3>女裝神社</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/951000/header.jpg?t=1727937492">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_nvzhuang_shenhua">
+		          <a href="https://pan.baidu.com/s/1Dl__kxU-vpRSyCBR883tRw?pwd=1145" target="_blank">
+		            <h3>女装神话</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1226530/header_schinese.jpg?t=1727937464">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_nvzhuang_chuangshi">
+		          <a href="https://pan.baidu.com/s/1ARFHTcA1Wa-bC_283sEdaA?pwd=1145" target="_blank">
+		            <h3>女装创世记</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1585700/header_schinese.jpg?t=1727937552">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_nvzhuang_baihe">
+		          <a href="https://pan.baidu.com/s/10noL2Xhszff6ItmtR-GKUw?pwd=1145" target="_blank">
+		            <h3>女装百合畑</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2183910/header_schinese.jpg?t=1749274380">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>狂想曲系列</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="mailto:3099637681@qq.com" target="_blank">
-								<h3>夏日狂想曲✳️</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1227890/header_schinese.jpg?t=1749385653">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1gpeH9FmxPbhDNKv_Op3uCg?pwd=y1xa" target="_blank">
-								<h3>冬日狂想曲</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2495450/header_schinese.jpg?t=1755877347">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+
+		<section class="section" id="non-series">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>非系列galgame</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_mirror">
+		          <a href="https://pan.baidu.com/s/1-hY4sMhKtgnXLNEROnrrDg?pwd=7ihy" target="_blank">
+		            <h3>Mirror</h3>
+		            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/644560/header.jpg?t=1665690863">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_qianlianwanhua">
+		          <a href="https://pan.baidu.com/s/1mLvpF8keW1dKtgn63xy9rA?pwd=4th3" target="_blank">
+		            <h3>千恋万花</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1144400/header_schinese.jpg?t=1752128014">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_shanliangnvyou">
+		          <a href="https://pan.baidu.com/s/1Ktb5euAAlDvOLhQcEsGp_Q?pwd=rtq1" target="_blank">
+		            <h3>闪亮女友</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3446120/header.jpg?t=1739527187">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_dreamdate">
+		          <a href="https://pan.baidu.com/s/12pnV2O-oVsDTtPxDdhzwXA?pwd=m59q" target="_blank">
+		            <h3>Dream Date</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1256610/header.jpg?t=1719829065">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_death_7days">
+		          <a href="https://pan.baidu.com/s/1WNBLTXv0Ly6v0ZLZT3hNOA?pwd=1145" target="_blank">
+		            <h3>与死神度过的七日</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/617820/header.jpg?t=1724206404">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_taboos_cracks">
+		          <a href="https://pan.baidu.com/s/1Wv8XNK5IwDMrqRTqfLpOCA?pwd=1145" target="_blank">
+		            <h3>Taboos: Cracks</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1060670/header.jpg?t=1732693553">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_eternal_fantasy">
+		          <a href="https://pan.baidu.com/s/1-huWDS11fMgZuFMJeQRvVQ?pwd=1145" target="_blank">
+		            <h3>Eternal Fantasy</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/844950/header.jpg?t=1539928768">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_jilemeitu_3">
+		          <a href="https://pan.baidu.com/s/1EIWxtA5IGtKFdPe3umC0Jw?pwd=1145" target="_blank">
+		            <h3>极乐妹土！3</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3838280/93ac4c9cd4a30e725983e9c4a294a00136bfd055/header_schinese.jpg?t=1761634979">
+		          </a>
+		          <p>备用链接<a href="https://patches.kagamied.com/" target="_blank">KAGAMI</a></p>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>lost系列</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1UyQJ3uXAv0ffoHQIvuRSGQ?pwd=1145" target="_blank">
-								<h3>lost 1</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1126290/header.jpg?t=1749226096">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1MdSmmWMAvNVQrZv_xK3tcg?pwd=1145" target="_blank">
-								<h3>lost 2</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1930640/header.jpg?t=1749230472">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1oWJjvaQmUl3B3ai1z6sDRg?pwd=1145" target="_blank">
-								<h3>lost:find</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1801650/header.jpg?t=1729185419">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+		<section class="section" id="text-heavy">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>非系列galgame（大量文字分类)</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_hakoniwa_logic">
+		          <a href="https://pan.baidu.com/s/1N14IiXWa1NkBWEGJE7VFQw?pwd=1145" target="_blank">
+		            <h3>箱庭逻辑</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/943980/header.jpg?t=1564534958">
+		          </a>
+		          <p>注意：该游戏官中没有R18补丁，如果安装失败可以切换为英文，或可去<a href="https://vndb.org/v14924" target="_blank">VNDB</a>查看</p>
+		        </div>
+		        <div class="content-item" id="g_summer_pockets_rb">
+		          <a href="https://pan.baidu.com/s/1cc9rj65JytLEWOLlqiTnLw?pwd=1145" target="_blank">
+		            <h3>Summer Pockets REFLECTION BLUE</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3418570/3ecfde9ce2b88e00514a2986a5e8b8fc91b37420/header.jpg?t=1756793980">
+		          </a>
+		          <p>注：此为R16补丁，官方并没有R18补丁。也只为还原补丁。也可以点此前往<a href="https://va-trialdist.azureedge.net/key/summer_rb/index.html" target="_blank">游戏官网</a>下载对应补丁</p>
+		        </div>
+		        <div class="content-item" id="g_witch_banquet">
+		          <a href="https://pan.baidu.com/s/1AGkk76YH7wmt0OKi4tsg2Q?pwd=1145" target="_blank">
+		            <h3>魔女的夜宴</h3>
+		            <img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/2458530/header.jpg?t=1690430359">
+		          </a>
+		          <p>或者前去游戏补丁<a href="https://appendingpulse.jp/dl/sowit5nmo2nv/" target="_blank">官方中文网站</a>下载对应补丁<br>
+		            在我这电脑里测试到，使用官网的7z压缩包时，使用电脑解压可能会出错或文件损坏，如有问题，请使用不同的设备或手机解压<br>
+		            解压后一共有6个文件，如有文件大小不对或缺少文件，则解压失败：<br>
+		            adult_evimage.xp3(1023.6mb)<br>
+		            adult_video1.xp3(519.3mb)<br>
+		            adult_video2.xp3(957.3mb)<br>
+		            adult_video3.xp3(959.5mb)<br>
+		            adult.xp3(716.5mb)<br>
+		            patch_adult.xp3(2.3mb)</p>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>苦主系列</h2>
-					<h3><a href="https://www.mediafire.com/folder/3q11g9beikhrr/DSGAME#kwi2o5knrv7pb"
-							target="_blank">官方下载链接</a></h3>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/14vLqxslD4Zm2MMOrCvGcfg" target="_blank">
-								<h3>苦主1</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2078780/header.jpg?t=1749230695">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1ttD-d49Y-a8mQ4V9Ec01iw" target="_blank">
-								<h3>苦主3</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2307120/header_schinese.jpg?t=1732693943">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+
+		<section class="section" id="full-package">
+		  <div class="container">
+		    <div class="section-title">
+		      <h2>电脑完整包专区</h2>
+		      <p>有能力的请支持正版</p>
+		    </div>
+		    <div class="content-section">
+		      <div class="content-container">
+		        <div class="content-item" id="g_shinjo_shinjo">
+		          <a href="https://pan.baidu.com/s/1dQZK2C0Dqay5qA0V-w0tDw?pwd=1145" target="_blank">
+		            <h3>少女神域 少女天狱</h3>
+		            <img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.etimAXzUtip4sNi8M7b0qQHaGp?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
+		            <p>解压码：heimanba</p>
+		            <p>文件压缩格式为一级压缩：.rar，二级压缩：.7z。一二级解压密码是一样的</p>
+		            <p><a href="https://dlsoft.dmm.co.jp/detail/russ_0144/?i3_ref=search&i3_ord=1" target="_blank">官网购买链接</a>，售价3800日元</p>
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_11eyes_resonaforma">
+		          <a href="https://pan.baidu.com/s/1yHnk65naGsVr9QSjEwlsOQ?pwd=1145" target="_blank">
+		            <h3>11eyes_resonaforma</h3>
+		            <img src="https://ts3.tc.mm.bing.net/th/id/OIP-C.eQKfQeQAUPQDHHph9YbiKwAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
+		          </a>
+		          <p><a href="https://dlsoft.dmm.co.jp/detail/russ_0105/?i3_ref=search&i3_ord=3" target="_blank">官网购买链接</a>，售价2800日元</p>
+		        </div>
+		        <div class="content-item" id="g_tianmi_3">
+		          <a href="https://pan.baidu.com/s/1QHa_47rGkMoEej1_am6NDw?pwd=1145" target="_blank">
+		            <h3>甜蜜女友3</h3>
+		            <img src="https://p3-pc-sign.douyinpic.com/obj/tos-cn-p-0015c000-ce/o80QtaCbQfNB8DbCI3mM8Jo7K1AWBetgFSDQQe?x-expires=2066526000&x-signature=Rq56f86T60zpoT2odyM21aRf4iY%3D&from=1516005123">
+		          </a>
+		          <p>内含ai翻译补丁，分卷压缩，解压码0721</p>
+		          <p><a href="https://dlsoft.dmm.co.jp/detail/next_0452/?i3_ref=search&i3_ord=1" target="_blank">官网购买链接</a>，售价13200日元</p>
+		        </div>
+		        <div class="content-item" id="g_limelight_lemonade">
+		          <a href="https://pan.baidu.com/s/1c7YoH1O19N_4yXLMGzL3XQ?pwd=1145" target="_blank">
+		            <h3>LimeLight Lemonade Jam</h3>
+		            <img src="https://ts3.tc.mm.bing.net/th/id/OIP-C.7LC_TFxQlJo_eafU2-1VYAHaEU?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
+		          </a>
+		          <p><a href="https://dlsoft.dmm.co.jp/detail/yuzu_0012/?i3_ref=search&i3_ord=1" target="_blank">官网购买链接</a>，售价8470日元</p>
+		          <p>内含ai翻译补丁，链接已替换为目前最新版V1.20版本，分卷压缩，解压码0721</p>
+		          <p>最新版FANZA<a href="https://www.yuzu-soft.com/products/lllj/support.html" target="_blank">R18补丁</a>下载地址</p>
+		          <p>需要旧版链接的<a href="https://pan.baidu.com/s/1aPeWS3Zd2jCdIm98mUrxVg?pwd=1145" target="_blank">请点击这里获取</a></p>
+		        </div>
+		        <div class="content-item" id="g_3days">
+		          <a href="https://pan.baidu.com/s/12qH2s-5_aPYXe0X9MEKiIA?pwd=1145" target="_blank">
+		            <h3>3days -満ちてゆく刻の彼方で-</h3>
+		            <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.inid5ZXqXsvvRhPdc8C7TAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3">
+		          </a>
+		          <p><a href="https://dlsoft.dmm.co.jp/detail/russ_0104/?i3_ref=search&i3_ord=1" target="_blank">官网购买链接</a>，售价3800日元</p>
+		          <p>解压密码：114514.请注意，本安装包为官网正版安装包，需要有已购买FANZA正版游戏的DMM账号使用，并且需要有<a href="https://www.soft-denchi.jp/comdocs/dlguide/index.htm" target="_blank">软电池</a>以及<a href="https://github.com/xupefei/Locale-Emulator/releases" target="_blank">LEGUI</a>的配合使用</p>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>Primal Hearts系列</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1_FyXvUhKqOLnZeCaTNPlMg?pwd=p5s2" target="_blank">
-								<h3>Primal Hearts</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1359400/header.jpg?t=1747632733">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/13SYEEZ5xdCDx4CPTNoVmVg?pwd=iki9" target="_blank">
-								<h3>Primal Hearts 2</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1368010/header.jpg?t=1747632690">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+		<section class="section" id="steam-codes">
+		  <div class="container">
+		    <div class="section-title"><h2>steam代码专区</h2></div>
+		    <div class="content-section">
+		      <div class="content-container">
+		        <div class="content-item" id="g_girl_jigsaw_2"><h3>girl jigsaw 2</h3><p>steam://install/1679580</p></div>
+		        <div class="content-item" id="g_neomorph"><h3>neomorph</h3><p>steam://install/1219330</p></div>
+		        <div class="content-item" id="g_love_dream"><h3>爱与梦</h3><p>steam://install/1356850</p></div>
+		        <div class="content-item" id="g_flower_yokai"><h3>花妖物语</h3><p>steam://install/1715900</p></div>
+		        <div class="content-item" id="g_milk_bottle_musume"><h3>缪可瓶与魔物娘</h3><p>steam://install/1852160</p></div>
+		        <div class="content-item" id="g_traveler_album"><h3>某旅行者的偷拍相册</h3><p>steam://install/1494130</p></div>
+		        <div class="content-item" id="g_love_wish"><h3>love wish</h3><p>steam://install/1274460</p><p><a href="https://store.steampowered.com/widget/1209400/" target="_blank">steam链接</a></p></div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="translation-patches">
+		  <div class="container">
+		    <div class="section-title"><h2>汉化补丁专区（非R18补丁)</h2></div>
+		    <div class="content-section">
+		      <h2>水仙系列（Narcissu)</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_narcissu_1"><a href="https://vndb.org/v10" target="_blank"><h3>水仙1st（Narcissu 1st）</h3><img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/264380/header.jpg?t=1726604657"></a></div>
+		        <div class="content-item" id="g_narcissu_2"><a href="https://vndb.org/v70" target="_blank"><h3>水仙2nd（Narcissu 2nd）</h3><img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/264380/header.jpg?t=1726604657"></a></div>
+		        <div class="content-item" id="g_narcissu_10th"><a href="https://www.rainlain.com/index.php/2024/11/01/2567/" target="_blank"><h3>水仙十周年纪念版</h3><img src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/426690/header.jpg?t=1726605219"></a></div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="mobile">
+		  <div class="container">
+		    <div class="section-title"><h2>手机专区</h2></div>
+		    <div class="content-section">
+		      <h2>安装包已自带补丁</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_picacg"><a href="https://pan.baidu.com/s/1XQ968gUbT81dS9llYPB1sw?pwd=729k" target="_blank"><h3>PicACG（哔咔漫画)</h3></a></div>
+		        <div class="content-item" id="g_maid_life"><a href="https://pan.baidu.com/s/1db1wB9Di97ueak0YIk07ew?pwd=qizk" target="_blank"><h3>女仆LIFE</h3></a></div>
+		        <div class="content-item" id="g_onanikki"><a href="https://pan.baidu.com/s/1_BlpYqJ9A3UnMUzm1Mqp3w?pwd=wx33" target="_blank"><h3>onanikki</h3></a></div>
+		      </div>
+		    </div>
+		  </div>
 		</section>
 
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>miss neko系列</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1jnH1sE--njE7D3mUmnDtYA?pwd=wk83" target="_blank">
-								<h3>miss neko</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1101450/header.jpg?t=1703481005">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1jnH1sE--njE7D3mUmnDtYA?pwd=wk83" target="_blank">
-								<h3>miss neko 2</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1203420/header.jpg?t=1737095118">
-							</a>
-							<p>或可WIN+R输入以下代码（此代码将直接运行游戏并安装，此代码暂时无锁国区)<br /></p>
-							<p>steam://run/1777410</p>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1jnH1sE--njE7D3mUmnDtYA?pwd=wk83" target="_blank">
-								<h3>miss neko 3</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2022180/header.jpg?t=1703480896">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>Sakura Isekai Adventure系列</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1N_E2TjMXGqCvDNNGNxuDeg?pwd=5w6t" target="_blank">
-								<h3>Sakura Isekai Adventure 1</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2646050/header.jpg?t=1708972570">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1I2w7ItJcl0cUKrtkeVM-IA?pwd=x133" target="_blank">
-								<h3>Sakura Isekai Adventure 2</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2832790/header.jpg?t=1716227410">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href=" https://pan.baidu.com/s/1BT_XUzGqyOevn7LbMzxleQ?pwd=hw62" target="_blank">
-								<h3>Sakura Isekai Adventure 3</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3240500/header.jpg?t=1741026701">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>女装系列</h2>
-					<p><a href="https://erogejapan.com/" target="_blank">官方下载链接</a>统一解压码：114514</p>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1XYsuOlGsOsUw9IqcUC0Pww?pwd=1145" target="_blank">
-								<h3>女裝神社</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/951000/header.jpg?t=1727937492">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1Dl__kxU-vpRSyCBR883tRw?pwd=1145" target="_blank">
-								<h3>女装神话</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1226530/header_schinese.jpg?t=1727937464">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1ARFHTcA1Wa-bC_283sEdaA?pwd=1145" target="_blank">
-								<h3>女装创世记</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1585700/header_schinese.jpg?t=1727937552">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/10noL2Xhszff6ItmtR-GKUw?pwd=1145" target="_blank">
-								<h3>女装百合畑</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2183910/header_schinese.jpg?t=1749274380">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>非系列galgame</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1-hY4sMhKtgnXLNEROnrrDg?pwd=7ihy" target="_blank">
-								<h3>Mirror</h3>
-								<img
-									src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/644560/header.jpg?t=1665690863">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1mLvpF8keW1dKtgn63xy9rA?pwd=4th3" target="_blank">
-								<h3>千恋万花</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1144400/header_schinese.jpg?t=1752128014">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1Ktb5euAAlDvOLhQcEsGp_Q?pwd=rtq1" target="_blank">
-								<h3>闪亮女友</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3446120/header.jpg?t=1739527187">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/12pnV2O-oVsDTtPxDdhzwXA?pwd=m59q" target="_blank">
-								<h3>Dream Date</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1256610/header.jpg?t=1719829065">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1WNBLTXv0Ly6v0ZLZT3hNOA?pwd=1145" target="_blank">
-								<h3>与死神度过的七日</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/617820/header.jpg?t=1724206404">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1Wv8XNK5IwDMrqRTqfLpOCA?pwd=1145" target="_blank">
-								<h3>Taboos: Cracks</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/1060670/header.jpg?t=1732693553">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1-huWDS11fMgZuFMJeQRvVQ?pwd=1145" target="_blank">
-								<h3>Eternal Fantasy</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/844950/header.jpg?t=1539928768">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1EIWxtA5IGtKFdPe3umC0Jw?pwd=1145" target="_blank">
-								<h3>极乐妹土！3</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3838280/93ac4c9cd4a30e725983e9c4a294a00136bfd055/header_schinese.jpg?t=1761634979">
-							</a>
-							<p>备用链接<a href="https://patches.kagamied.com/" target="_blank">KAGAMI</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="content-section">
-					<h2>非系列galgame（大量文字分类)</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1N14IiXWa1NkBWEGJE7VFQw?pwd=1145" target="_blank">
-								<h3>箱庭逻辑</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/943980/header.jpg?t=1564534958">
-							</a>
-							<p>注意：该游戏官中没有R18补丁，如果安装失败可以切换为英文，或可去<a href="https://vndb.org/v14924"
-									target="_blank">VNDB</a>查看</p>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1cc9rj65JytLEWOLlqiTnLw?pwd=1145" target="_blank">
-								<h3>Summer Pockets REFLECTION BLUE</h3>
-								<img
-									src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3418570/3ecfde9ce2b88e00514a2986a5e8b8fc91b37420/header.jpg?t=1756793980">
-							</a>
-							<p>注：此为R16补丁，官方并没有R18补丁。也只为还原补丁。也可以点此前往<a
-									href="https://va-trialdist.azureedge.net/key/summer_rb/index.html"
-									target="_blank">游戏官网</a>下载对应补丁</p>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1AGkk76YH7wmt0OKi4tsg2Q?pwd=1145" target="_blank">
-								<h3>魔女的夜宴</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/2458530/header.jpg?t=1690430359">
-							</a>
-							<p>或者前去游戏补丁<a href="https://appendingpulse.jp/dl/sowit5nmo2nv/"
-									target="_blank">官方中文网站</a>下载对应补丁<br />
-								在我这电脑里测试到，使用官网的7z压缩包时，使用电脑解压可能会出错或文件损坏，如有问题，请使用不同的设备或手机解压<br />
-								解压后一共有6个文件，如有文件大小不对或缺少文件，则解压失败：<br />
-								adult_evimage.xp3(1023.6mb)<br />
-								adult_video1.xp3(519.3mb)<br />
-								adult_video2.xp3(957.3mb)<br />
-								adult_video3.xp3(959.5mb)<br />
-								adult.xp3(716.5mb)<br />
-								patch_adult.xp3(2.3mb)</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="section-title">
-					<h2>电脑完整包专区</h2>
-					<p>有能力的请支持正版</p>
-				</div>
-				<div class="content-section">
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1dQZK2C0Dqay5qA0V-w0tDw?pwd=1145" target="_blank">
-								<h3>少女神域 少女天狱</h3>
-								<img
-									src="https://ts1.tc.mm.bing.net/th/id/OIP-C.etimAXzUtip4sNi8M7b0qQHaGp?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
-								<p>解压码：heimanba</p>
-								<p>文件压缩格式为一级压缩：.rar，二级压缩：.7z。一二级解压密码是一样的</p>
-								<p><a href="https://dlsoft.dmm.co.jp/detail/russ_0144/?i3_ref=search&i3_ord=1"
-										target="_blank">官网购买链接</a>，售价3800日元</p>
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1yHnk65naGsVr9QSjEwlsOQ?pwd=1145" target="_blank">
-								<h3>11eyes_resonaforma</h3>
-								<img
-									src="https://ts3.tc.mm.bing.net/th/id/OIP-C.eQKfQeQAUPQDHHph9YbiKwAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
-							</a>
-							<p><a href="https://dlsoft.dmm.co.jp/detail/russ_0105/?i3_ref=search&i3_ord=3"
-									target="_blank">官网购买链接</a>，售价2800日元</p>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1QHa_47rGkMoEej1_am6NDw?pwd=1145" target="_blank">
-								<h3>甜蜜女友3</h3>
-								<img
-									src="https://p3-pc-sign.douyinpic.com/obj/tos-cn-p-0015c000-ce/o80QtaCbQfNB8DbCI3mM8Jo7K1AWBetgFSDQQe?x-expires=2066526000&x-signature=Rq56f86T60zpoT2odyM21aRf4iY%3D&from=1516005123">
-							</a>
-							<p>内含ai翻译补丁，分卷压缩，解压码0721</p>
-							<p><a href="https://dlsoft.dmm.co.jp/detail/next_0452/?i3_ref=search&i3_ord=1"
-									target="_blank">官网购买链接</a>，售价13200日元</p>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1c7YoH1O19N_4yXLMGzL3XQ?pwd=1145" target="_blank">
-								<h3>LimeLight Lemonade Jam</h3>
-								<img
-									src="https://ts3.tc.mm.bing.net/th/id/OIP-C.7LC_TFxQlJo_eafU2-1VYAHaEU?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
-							</a>
-							<p><a href="https://dlsoft.dmm.co.jp/detail/yuzu_0012/?i3_ref=search&i3_ord=1"
-									target="_blank">官网购买链接</a>，售价8470日元</p>
-							<p>内含ai翻译补丁，链接已替换为目前最新版V1.20版本，分卷压缩，解压码0721</p>
-							<p>最新版FANZA<a href="https://www.yuzu-soft.com/products/lllj/support.html"
-									target="_blank">R18补丁</a>下载地址</p>
-							<p>需要旧版链接的<a href="https://pan.baidu.com/s/1aPeWS3Zd2jCdIm98mUrxVg?pwd=1145"
-									target="_blank">请点击这里获取</a></p>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/12qH2s-5_aPYXe0X9MEKiIA?pwd=1145" target="_blank">
-								<h3>3days -満ちてゆく刻の彼方で-</h3>
-								<img
-									src="https://ts4.tc.mm.bing.net/th/id/OIP-C.inid5ZXqXsvvRhPdc8C7TAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3">
-							</a>
-							<p><a href="https://dlsoft.dmm.co.jp/detail/russ_0104/?i3_ref=search&i3_ord=1"
-									target="_blank">官网购买链接</a>，售价3800日元</p>
-							<p>解压密码：114514.请注意，本安装包为官网正版安装包，需要有已购买FANZA正版游戏的DMM账号使用，并且需要有<a
-									href="https://www.soft-denchi.jp/comdocs/dlguide/index.htm"
-									target="_blank">软电池</a>以及<a
-									href="https://github.com/xupefei/Locale-Emulator/releases"
-									target="_blank">LEGUI</a>的配合使用</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="section-title">
-					<h2>steam代码专区</h2>
-				</div>
-				<div class="content-section">
-					<div class="content-container">
-						<div class="content-item">
-							<h3>girl jigsaw 2</h3>
-							<p>steam://install/1679580</p>
-						</div>
-						<div class="content-item">
-							<h3>neomorph</h3>
-							<p>steam://install/1219330</p>
-						</div>
-						<div class="content-item">
-							<h3>爱与梦</h3>
-							<p>steam://install/1356850</p>
-						</div>
-						<div class="content-item">
-							<h3>花妖物语</h3>
-							<p>steam://install/1715900</p>
-						</div>
-						<div class="content-item">
-							<h3>缪可瓶与魔物娘</h3>
-							<p>steam://install/1852160</p>
-						</div>
-						<div class="content-item">
-							<h3>某旅行者的偷拍相册</h3>
-							<p>steam://install/1494130</p>
-						</div>
-						<div class="content-item">
-							<h3>love wish</h3>
-							<p>steam://install/1274460</p>
-							<p><a href="https://store.steampowered.com/widget/1209400/" target="_blank">steam链接</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="section-title">
-					<h2>汉化补丁专区（非R18补丁)</h2>
-				</div>
-				<div class="content-section">
-					<h2>水仙系列（Narcissu)</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://vndb.org/v10" target="_blank">
-								<h3>水仙1st（Narcissu 1st）</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/264380/header.jpg?t=1726604657">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://vndb.org/v70" target="_blank">
-								<h3>水仙2nd（Narcissu 2nd）</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/264380/header.jpg?t=1726604657">
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://www.rainlain.com/index.php/2024/11/01/2567/" target="_blank">
-								<h3>水仙十周年纪念版</h3>
-								<img
-									src="https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/426690/header.jpg?t=1726605219">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="container">
-				<div class="section-title">
-					<h2>手机专区</h2>
-				</div>
-				<div class="content-section">
-					<h2>安装包已自带补丁</h2>
-					<div class="content-container">
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1XQ968gUbT81dS9llYPB1sw?pwd=729k" target="_blank">
-								<h3>PicACG（哔咔漫画)</h3>
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1db1wB9Di97ueak0YIk07ew?pwd=qizk" target="_blank">
-								<h3>女仆LIFE</h3>
-							</a>
-						</div>
-						<div class="content-item">
-							<a href="https://pan.baidu.com/s/1_BlpYqJ9A3UnMUzm1Mqp3w?pwd=wx33" target="_blank">
-								<h3>onanikki</h3>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 		<button id="backToTopBtn">回到顶部</button>
 		<button id="scrollToBottomBtn" class="show">滚到底部</button>
@@ -910,6 +954,444 @@
 			</div>
 		</footer>
 		<script>
+			// 搜索功能实现
+			document.addEventListener('DOMContentLoaded', function() {
+				assignSectionIds(); 
+				const aliasMap = {
+				  /* -------- NEKOPARA -------- */
+				  "NEKOPARA After": ["NEKOPARA After", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
+				  "NEKOPARA Vol_1": ["NEKOPARA Vol_1", "猫娘 Vol.1", "nekopara vol1", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
+				  "NEKOPARA Vol_2": ["NEKOPARA Vol_2", "猫娘 Vol.2", "nekopara vol2", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
+				  "NEKOPARA Vol_3": ["NEKOPARA Vol_3", "猫娘 Vol.3", "nekopara vol3", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
+				  "NEKOPARA Vol_4": ["NEKOPARA Vol_4", "猫娘 Vol.4", "nekopara vol4", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
+				
+				  /* -------- Seek Girl -------- */
+				  "seek girl": ["seek girl", "SeekGirl", "seekgirl", "SG1"],
+				  "seek girl 2": ["seek girl 2", "SG2", "seekgirl2"],
+				  "seek girl 3": ["seek girl 3", "SG3", "seekgirl3"],
+				  "seek girl 4": ["seek girl 4", "SG4", "seekgirl4"],
+				  "seek girl 5": ["seek girl 5", "SG5", "seekgirl5"],
+				  "seek girl 6": ["seek girl 6", "SG6", "seekgirl6"],
+				  "seek girl 7": ["seek girl 7", "SG7", "seekgirl7"],
+				  "seek girl 8": ["seek girl 8", "SG8", "seekgirl8"],
+				
+				  /* -------- 狂想曲 -------- */
+				  "夏日狂想曲✳️": ["夏日狂想曲✳️", "夏狂"],
+				  "冬日狂想曲": ["冬日狂想曲", "冬狂", "Winter Rhapsody"],
+				
+				  /* -------- Lost -------- */
+				  "lost 1": ["lost 1", "Lost1"],
+				  "lost 2": ["lost 2", "Lost2"],
+				  "lost:find": ["lost:find", "Lost:Find", "Lost Find"],
+				
+				  /* -------- 苦主 -------- */
+				  "苦主1": ["苦主1", "苦主救助中心"],
+				  "苦主3": ["苦主3", "苦主救助中心3"],
+				
+				  /* -------- Primal Hearts -------- */
+				  "Primal Hearts": ["Primal Hearts", "PH1"],
+				  "Primal Hearts 2": ["Primal Hearts 2", "PH2"],
+				
+				  /* -------- Miss Neko -------- */
+				  "miss neko": ["miss neko", "Miss Neko", "MissNeko", "猫娘女仆", "女仆猫娘"],
+				  "miss neko 2": ["miss neko 2", "Miss Neko 2"],
+				  "miss neko 3": ["miss neko 3", "Miss Neko 3"],
+				
+				  /* -------- Sakura Isekai -------- */
+				  "Sakura Isekai Adventure 1": ["Sakura Isekai Adventure 1", "樱花异世界1"],
+				  "Sakura Isekai Adventure 2": ["Sakura Isekai Adventure 2", "樱花异世界2"],
+				  "Sakura Isekai Adventure 3": ["Sakura Isekai Adventure 3", "樱花异世界3"],
+				
+				  /* -------- 女装系列 -------- */
+				  "女裝神社": ["女裝神社", "女装神社"],
+				  "女装神话": ["女装神话"],
+				  "女装创世记": ["女装创世记"],
+				  "女装百合畑": ["女装百合畑", "百合畑"],
+				
+				  /* -------- 单发 & 其它 -------- */
+				  "Mirror": ["Mirror", "魔镜", "mirror"],
+				  "千恋万花": ["千恋万花", "千恋", "万花", "Senren＊Banka","千恋＊万花"],
+				  "闪亮女友": ["闪亮女友", "闪亮"],
+				  "Dream Date": ["Dream Date"],
+				  "与死神度过的七日": ["与死神度过的七日", "7 Days with Death"],
+				  "Taboos: Cracks": ["Taboos: Cracks"],
+				  "Eternal Fantasy": ["Eternal Fantasy"],
+				  "极乐妹土！3": ["极乐妹土！3", "极乐"],
+				  "箱庭逻辑": ["箱庭逻辑", "Hakoniwa Logic", "箱庭"],
+				  "Summer Pockets REFLECTION BLUE": ["Summer Pockets REFLECTION BLUE", "SP RB", "summer pockets rb"],
+				  "魔女的夜宴": ["魔女的夜宴", "Witch's Banquet", "SABATO", "魔女"],
+				
+				  /* -------- 完整包 -------- */
+				  "少女神域 少女天狱": ["少女神域 少女天狱", "少女神域","The Garden of Fifth Zoa","少女神域∽少女天狱 -The Garden of Fifth Zoa-"],
+				  "11eyes_resonaforma": ["11eyes_resonaforma", "11eyes", "11eyes Resona Forma",],
+				  "甜蜜女友3": ["甜蜜女友3", "甜蜜女友"],
+				  "LimeLight Lemonade Jam": ["LimeLight Lemonade Jam", "limelight"],
+				  "3days -満ちてゆく刻の彼方で-": ["3days -満ちてゆく刻の彼方で-", "3days","3days～在逝去时间的另一端～"],
+				
+				  /* -------- Steam 代码区 -------- */
+				  "girl jigsaw 2": ["girl jigsaw 2"],
+				  "neomorph": ["neomorph"],
+				  "爱与梦": ["爱与梦"],
+				  "花妖物语": ["花妖物语", "花妖"],
+				  "缪可瓶与魔物娘": ["缪可瓶与魔物娘"],
+				  "某旅行者的偷拍相册": ["某旅行者的偷拍相册", "偷拍相册"],
+				  "love wish": ["love wish"],
+				
+				  /* -------- 汉化补丁 -------- */
+				  "水仙1st": ["水仙1st", "水仙", "Narcissu"],
+				  "水仙2nd": ["水仙2nd", "水仙"],
+				  "水仙十周年纪念版": ["水仙十周年纪念版", "水仙十周年"],
+				
+				  /* -------- 手机区 -------- */
+				  "PicACG": ["PicACG", "哔咔"],
+				  "女仆LIFE": ["女仆LIFE", "女仆"],
+				  "onanikki": ["onanikki"]
+				};
+
+			    const searchData = [
+			      /* ========== 分类 category ========== */
+			      { id: 'c_nekopara', name: 'NEKOPARA系列', type: 'category', target: 'nekopara' },
+			      { id: 'c_seekgirl', name: 'seek girl系列', type: 'category', target: 'seek-girl' },
+			      { id: 'c_kuangxiangqu', name: '狂想曲系列', type: 'category', target: 'rhapsody' },
+			      { id: 'c_lost', name: 'lost系列', type: 'category', target: 'lost' },
+			      { id: 'c_kuzhu', name: '苦主系列', type: 'category', target: 'suffering' },
+			      { id: 'c_primalhearts', name: 'Primal Hearts系列', type: 'category', target: 'primal-hearts' },
+			      { id: 'c_missneko', name: 'miss neko系列', type: 'category', target: 'miss-neko' },
+			      { id: 'c_sakuraisekai', name: 'Sakura Isekai Adventure系列', type: 'category', target: 'sakura-isekai' },
+			      { id: 'c_nvzhuang', name: '女装系列', type: 'category', target: 'crossdressing' },
+			      { id: 'c_nonseries', name: '非系列galgame', type: 'category', target: 'non-series' },
+			      { id: 'c_textheavy', name: '非系列galgame（大量文字分类）', type: 'category', target: 'text-heavy' },
+			      { id: 'c_fullpkg', name: '电脑完整包专区', type: 'category', target: 'full-package' },
+			      { id: 'c_steamcode', name: 'steam代码专区', type: 'category', target: 'steam-codes' },
+			      { id: 'c_translation', name: '汉化补丁专区', type: 'category', target: 'translation-patches' },
+			      { id: 'c_mobile',       name: '手机专区',     type: 'category', target: 'mobile' },
+
+			      /* ========== 游戏 game ========== */
+			      { id: 'g_nekopara_after', name: 'NEKOPARA After', type: 'game', target: 'nekopara' },
+			      { id: 'g_nekopara_vol1', name: 'NEKOPARA Vol_1', type: 'game', target: 'nekopara' },
+			      { id: 'g_nekopara_vol2', name: 'NEKOPARA Vol_2', type: 'game', target: 'nekopara' },
+			      { id: 'g_nekopara_vol3', name: 'NEKOPARA Vol_3', type: 'game', target: 'nekopara' },
+			      { id: 'g_nekopara_vol4', name: 'NEKOPARA Vol_4', type: 'game', target: 'nekopara' },
+			      { id: 'g_seekgirl_1', name: 'seek girl', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_2', name: 'seek girl 2', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_3', name: 'seek girl 3', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_4', name: 'seek girl 4', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_5', name: 'seek girl 5', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_6', name: 'seek girl 6', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_7', name: 'seek girl 7', type: 'game', target: 'seek-girl' },
+			      { id: 'g_seekgirl_8', name: 'seek girl 8', type: 'game', target: 'seek-girl' },
+			      { id: 'g_summer_rhapsody', name: '夏日狂想曲', type: 'game', target: 'rhapsody' },
+			      { id: 'g_winter_rhapsody', name: '冬日狂想曲', type: 'game', target: 'rhapsody' },
+			      { id: 'g_lost_1', name: 'lost 1', type: 'game', target: 'lost' },
+			      { id: 'g_lost_2', name: 'lost 2', type: 'game', target: 'lost' },
+			      { id: 'g_lost_find', name: 'lost:find', type: 'game', target: 'lost' },
+			      { id: 'g_kuzhu_1', name: '苦主1', type: 'game', target: 'suffering' },
+			      { id: 'g_kuzhu_3', name: '苦主3', type: 'game', target: 'suffering' },
+			      { id: 'g_primalhearts_1', name: 'Primal Hearts', type: 'game', target: 'primal-hearts' },
+			      { id: 'g_primalhearts_2', name: 'Primal Hearts 2', type: 'game', target: 'primal-hearts' },
+			      { id: 'g_missneko_1', name: 'miss neko', type: 'game', target: 'miss-neko' },
+			      { id: 'g_missneko_2', name: 'miss neko 2', type: 'game', target: 'miss-neko' },
+			      { id: 'g_missneko_3', name: 'miss neko 3', type: 'game', target: 'miss-neko' },
+			      { id: 'g_sakuraisekai_1', name: 'Sakura Isekai Adventure 1', type: 'game', target: 'sakura-isekai' },
+			      { id: 'g_sakuraisekai_2', name: 'Sakura Isekai Adventure 2', type: 'game', target: 'sakura-isekai' },
+			      { id: 'g_sakuraisekai_3', name: 'Sakura Isekai Adventure 3', type: 'game', target: 'sakura-isekai' },
+			      { id: 'g_nvzhuang_shensha', name: '女裝神社', type: 'game', target: 'crossdressing' },
+			      { id: 'g_nvzhuang_shenhua', name: '女装神话', type: 'game', target: 'crossdressing' },
+			      { id: 'g_nvzhuang_chuangshi', name: '女装创世记', type: 'game', target: 'crossdressing' },
+			      { id: 'g_nvzhuang_baihe', name: '女装百合畑', type: 'game', target: 'crossdressing' },
+			      { id: 'g_mirror', name: 'Mirror', type: 'game', target: 'non-series' },
+			      { id: 'g_qianlianwanhua', name: '千恋万花', type: 'game', target: 'non-series' },
+			      { id: 'g_shanliangnvyou', name: '闪亮女友', type: 'game', target: 'non-series' },
+			      { id: 'g_dreamdate', name: 'Dream Date', type: 'game', target: 'non-series' },
+			      { id: 'g_death_7days', name: '与死神度过的七日', type: 'game', target: 'non-series' },
+			      { id: 'g_taboos_cracks', name: 'Taboos: Cracks', type: 'game', target: 'non-series' },
+			      { id: 'g_eternal_fantasy', name: 'Eternal Fantasy', type: 'game', target: 'non-series' },
+			      { id: 'g_jilemeitu_3', name: '极乐妹土！3', type: 'game', target: 'non-series' },
+			      { id: 'g_hakoniwa_logic', name: '箱庭逻辑', type: 'game', target: 'text-heavy' },
+			      { id: 'g_summer_pockets_rb', name: 'Summer Pockets REFLECTION BLUE', type: 'game', target: 'text-heavy' },
+			      { id: 'g_witch_banquet', name: '魔女的夜宴', type: 'game', target: 'text-heavy' },
+			      { id: 'g_shinjo_shinjo', name: '少女神域 少女天狱', type: 'game', target: 'full-package' },
+			      { id: 'g_11eyes_resonaforma', name: '11eyes_resonaforma', type: 'game', target: 'full-package' },
+			      { id: 'g_tianmi_3', name: '甜蜜女友3', type: 'game', target: 'full-package' },
+			      { id: 'g_limelight_lemonade', name: 'LimeLight Lemonade Jam', type: 'game', target: 'full-package' },
+			      { id: 'g_3days', name: '3days -満ちてゆく刻の彼方で-', type: 'game', target: 'full-package' },
+			      { id: 'g_girl_jigsaw_2', name: 'girl jigsaw 2', type: 'game', target: 'steam-codes' },
+			      { id: 'g_neomorph', name: 'neomorph', type: 'game', target: 'steam-codes' },
+			      { id: 'g_love_dream', name: '爱与梦', type: 'game', target: 'steam-codes' },
+			      { id: 'g_flower_yokai', name: '花妖物语', type: 'game', target: 'steam-codes' },
+			      { id: 'g_milk_bottle_musume', name: '缪可瓶与魔物娘', type: 'game', target: 'steam-codes' },
+			      { id: 'g_traveler_album', name: '某旅行者的偷拍相册', type: 'game', target: 'steam-codes' },
+			      { id: 'g_love_wish', name: 'love wish', type: 'game', target: 'steam-codes' },
+			      { id: 'g_narcissu_1', name: '水仙1st', type: 'game', target: 'translation-patches' },
+			      { id: 'g_narcissu_2', name: '水仙2nd', type: 'game', target: 'translation-patches' },
+			      { id: 'g_narcissu_10th', name: '水仙十周年纪念版', type: 'game', target: 'translation-patches' },
+			      { id: 'g_picacg', name: 'PicACG', type: 'game', target: 'mobile' },
+			      { id: 'g_maid_life', name: '女仆LIFE', type: 'game', target: 'mobile' },
+			      { id: 'g_onanikki', name: 'onanikki', type: 'game', target: 'mobile' }
+			    ];
+				
+				function expandQueryWithAlias(query) {
+				  const lower = query.toLowerCase();
+				  const expanded = new Set([query]);
+				  for (const [std, synonyms] of Object.entries(aliasMap)) {
+				    const matched = synonyms.some(s => s.toLowerCase().includes(lower) || lower.includes(s.toLowerCase()));
+				    if (matched) expanded.add(std);
+				  }
+				  return [...expanded];
+				}
+
+
+			    function assignSectionIds() {
+			        const sections = document.querySelectorAll('.section');
+			        sections.forEach(section => {
+			            const h2 = section.querySelector('h2');
+			            if (!h2) return;
+			    
+			            let id = h2.textContent
+			                .toLowerCase()
+			                .replace(/[^\w\u4e00-\u9fa5]/g, '-')
+			                .replace(/-+/g, '-')
+			                .replace(/^-|-$/g, '');
+			    
+			            // 手动映射一些特殊标题
+			            const manualMap = {
+			                '手机专区': 'mobile',
+			                'steam代码专区': 'steam-codes',
+			                '汉化补丁专区（非R18补丁)': 'translation-patches',
+			                '电脑完整包专区': 'full-package',
+			                '非系列galgame（大量文字分类)': 'text-heavy',
+			                '非系列galgame': 'non-series',
+			                '女装系列': 'crossdressing',
+			                'miss neko系列': 'miss-neko',
+			                'sakura isekai adventure系列': 'sakura-isekai',
+			                'primal hearts系列': 'primal-hearts',
+			                '苦主系列': 'suffering',
+			                'lost系列': 'lost',
+			                '狂想曲系列': 'rhapsody',
+			                'seek girl系列': 'seek-girl',
+			                'nekopara系列': 'nekopara'
+			            };
+
+			    
+			            const manualId = manualMap[h2.textContent.trim()];
+			            if (manualId) {
+			                section.id = manualId;
+			            } else if (id) {
+			                section.id = id;
+			            }
+			        });
+			    }
+
+			
+			    // 获取DOM元素
+			    const searchInput = document.getElementById('searchInput');
+			    const searchBtn = document.getElementById('searchBtn');
+			    const searchDropdown = document.getElementById('searchDropdown');
+			    
+			    let currentHighlightIndex = -1;
+			    let filteredResults = [];
+			
+			    // 搜索功能
+			    function performSearch(query) {
+			      const queries = expandQueryWithAlias(query.trim());
+			      const lowerQueries = queries.map(q => q.toLowerCase());
+			    
+			      if (!query.trim()) {
+			        hideDropdown();
+			        return;
+			      }
+			    
+			      filteredResults = searchData.filter(item =>
+			        lowerQueries.some(q => item.name.toLowerCase().includes(q))
+			      );
+			    
+			      displayDropdown(filteredResults);
+			    }
+			    
+			    // 显示下拉菜单
+			    function displayDropdown(results) {
+			        if (results.length === 0) {
+			            searchDropdown.innerHTML = '<div class="search-dropdown-item">未找到匹配项</div>';
+			        } else {
+			            searchDropdown.innerHTML = results.map((item, index) =>
+			                `<div class="search-dropdown-item" data-index="${index}" data-target="${item.target}">
+			                    <strong>${item.name}</strong> - ${item.type === 'category' ? '分类' : '游戏'}
+			                </div>`
+			            ).join('');
+			        }
+			        
+			        searchDropdown.classList.add('active');
+			        currentHighlightIndex = 0;
+			    }
+			    
+			    // 隐藏下拉菜单
+			    function hideDropdown() {
+			        searchDropdown.classList.remove('active');
+			        currentHighlightIndex = -1;
+			    }
+				
+				
+				function navigateToTarget(targetId) {
+				    console.log('正在跳转到目标:', targetId);
+				    
+				    // 第一重：精确ID匹配
+				    let targetElement = document.getElementById(targetId);
+				    
+				    // 第二重：部分ID匹配
+				    if (!targetElement) {
+				        targetElement = document.querySelector(`[id*="${targetId}"]`);
+				    }
+				    
+				    // 第三重：标题模糊匹配
+				    if (!targetElement) {
+				        const allSections = document.querySelectorAll('section');
+				        for (let section of allSections) {
+				            const h2 = section.querySelector('h2');
+				            if (h2) {
+				                const sectionTitle = h2.textContent.toLowerCase()
+				                    .replace(/[^\w\u4e00-\u9fa5]/g, '')
+				                    .replace(/系列|专区/g, '');
+				                const searchTarget = targetId.toLowerCase()
+				                    .replace(/[^\w\u4e00-\u9fa5]/g, '')
+				                    .replace(/-/g, '');
+				                
+				                if (sectionTitle.includes(searchTarget) || searchTarget.includes(sectionTitle)) {
+				                    targetElement = section;
+				                    break;
+				                }
+				            }
+				        }
+				    }
+				    
+				    // 第四重：内容项匹配
+				    if (!targetElement) {
+				        const contentItems = document.querySelectorAll('.content-item');
+				        for (let item of contentItems) {
+				            const h3 = item.querySelector('h3');
+				            if (h3 && h3.textContent.toLowerCase().includes(targetId.toLowerCase())) {
+				                targetElement = item;
+				                break;
+				            }
+				        }
+				    }
+				
+				    if (targetElement) {
+				        console.log('找到目标元素:', targetElement);
+				        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+				        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+				
+				        window.scrollTo({
+				            top: targetPosition,
+				            behavior: 'smooth'
+				        });
+				
+				        // 高亮动画
+				        targetElement.style.transition = 'all 0.5s ease';
+				        targetElement.style.boxShadow = '0 0 0 3px rgba(77, 182, 172, 0.5)';
+				        setTimeout(() => {
+				            targetElement.style.boxShadow = 'none';
+				        }, 2000);
+				    } else {
+				        console.warn(`未找到目标分区：${targetId}`);
+				        // 提供用户反馈，但不要用alert，用更友好的方式
+				        const originalText = searchInput.placeholder;
+				        searchInput.placeholder = `未找到"${targetId}"，请尝试其他搜索词`;
+				        setTimeout(() => {
+				            searchInput.placeholder = originalText;
+				        }, 3000);
+				        
+				        // 仍然滚动到顶部，但提供反馈
+				        window.scrollTo({ top: 0, behavior: 'smooth' });
+				    }
+				
+				    hideDropdown();
+				    searchInput.value = '';
+				}
+			        
+			    // 事件监听
+			    searchInput.addEventListener('input', function() {
+			        performSearch(this.value);
+			    });
+			    
+			    searchInput.addEventListener('keydown', function(e) {
+			        if (e.key === 'Enter') {
+			            if (filteredResults.length > 0 && currentHighlightIndex >= 0) {
+			                const selectedItem = filteredResults[currentHighlightIndex];
+			                navigateToTarget(selectedItem.target);
+			            }
+			        } else if (e.key === 'ArrowDown') {
+			            e.preventDefault();
+			            if (currentHighlightIndex < filteredResults.length - 1) {
+			                currentHighlightIndex++;
+			                updateHighlight();
+			            }
+			        } else if (e.key === 'ArrowUp') {
+			            e.preventDefault();
+			            if (currentHighlightIndex > 0) {
+			                currentHighlightIndex--;
+			                updateHighlight();
+			            }
+			        } else if (e.key === 'Escape') {
+			            hideDropdown();
+			        }
+			    });
+			    
+			    searchBtn.addEventListener('click', function() {
+			        performSearch(searchInput.value);
+			        if (filteredResults.length > 0 && currentHighlightIndex >= 0) {
+			            const selectedItem = filteredResults[currentHighlightIndex];
+			            navigateToTarget(selectedItem.target);
+			        }
+			    });
+			    
+			    // 下拉菜单项点击事件
+			    searchDropdown.addEventListener('click', function(e) {
+			        const item = e.target.closest('.search-dropdown-item');
+			        if (item && item.dataset.index !== undefined) {
+			            const index = parseInt(item.dataset.index);
+			            const selectedItem = filteredResults[index];
+			            navigateToTarget(selectedItem.target);
+			        }
+			    });
+			    
+			    // 更新高亮项
+			    function updateHighlight() {
+			        const items = searchDropdown.querySelectorAll('.search-dropdown-item');
+			        items.forEach((item, index) => {
+			            if (index === currentHighlightIndex) {
+			                item.classList.add('highlight');
+			            } else {
+			                item.classList.remove('highlight');
+			            }
+			        });
+			    }
+			    
+			    // 点击页面其他区域关闭下拉菜单
+			    document.addEventListener('click', function(e) {
+			        if (!e.target.closest('.search-container')) {
+			            hideDropdown();
+			        }
+			    });
+			    
+			    // 移动端菜单切换时显示/隐藏搜索框
+			    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+			    if (mobileMenuBtn) {
+			        mobileMenuBtn.addEventListener('click', function() {
+			            // 移动端时，搜索框在菜单展开时显示
+			            if (window.innerWidth <= 900) {
+			                const searchContainer = document.querySelector('.search-container');
+			                if (searchContainer) {
+			                    const navLinks = document.querySelector('.nav-links');
+			                    if (navLinks.classList.contains('active')) {
+			                        searchContainer.style.display = 'block';
+			                    } else {
+			                        searchContainer.style.display = 'none';
+			                    }
+			                }
+			            }
+			        });
+			    }
+			});
 			document.addEventListener('DOMContentLoaded', function() {
 				const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 				const navLinks = document.querySelector('.nav-links');
@@ -1088,6 +1570,26 @@
 				// 初始化
 				initSlider();
 			});
+			
+			// 更新顶部操作栏占位符高度
+			function updateHeaderPlaceholder() {
+				// 获取顶部操作栏和占位元素
+				const header = document.querySelector('.header');
+				const placeholder = document.querySelector('.header-placeholder');
+			
+				// 确保元素存在
+				if (header && placeholder) {
+					// 计算高度（操作栏高度 + 5px缓冲）
+					const height = header.offsetHeight + 5;
+			
+					// 设置占位元素高度
+					placeholder.style.height = `${height}px`;
+				}
+			}
+			
+			// 页面加载和窗口大小变化时更新占位符
+			window.addEventListener('DOMContentLoaded', updateHeaderPlaceholder);
+			window.addEventListener('resize', updateHeaderPlaceholder);
 		</script>
 	</body>
 </html>
