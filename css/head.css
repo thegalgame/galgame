@@ -1152,3 +1152,10 @@
 			        height: 65px !important;
 			    }
 			}
+
+            .cd-code-content u strong,
+			.cd-code-content strong.u {
+			    font-weight: bold;
+			    text-decoration: underline;
+			    color: #d93025;
+			}
