@@ -335,6 +335,13 @@
 		
 		<div class="header-placeholder"></div>
 		<div class="header-placeholder"></div>
+		
+		
+		<script type="module">
+		  import { initSearch } from './js/search.js';   
+		  initSearch();  
+		</script>
+
 
 		<section class="section">
 			<div class="container">
@@ -607,6 +614,28 @@
 		  </div>
 		</section>
 		
+		<section class="section" id="pretty">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>Pretty系列</h2>
+		      <div class="content-container">
+		        <div class="content-item" id="g_pretty_angel">
+		          <a href="https://pan.baidu.com/s/199LkVxy2sT-O691aO6o76g?pwd=1145" target="_blank">
+		            <h3>Pretty Angel</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1148510/header.jpg?t=1747293065">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_pretty_neko">
+		          <a href="https://pan.baidu.com/s/1X7KteEd5orqevIFWoR-eFg?pwd=1145" target="_blank">
+		            <h3>Pretty Neko</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1212620/header.jpg?t=1747293065">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
 		<section class="section" id="miss-neko">
 		  <div class="container">
 		    <div class="content-section">
@@ -693,6 +722,47 @@
 		          <a href="https://pan.baidu.com/s/10noL2Xhszff6ItmtR-GKUw?pwd=1145" target="_blank">
 		            <h3>女装百合畑</h3>
 		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2183910/header_schinese.jpg?t=1749274380">
+		          </a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+		
+		<section class="section" id="c_sakurahime">
+		  <div class="container">
+		    <div class="content-section">
+		      <h2>sakurahime系列</h2>
+		      <p><a href="https://www.mediafire.com/folder/da0itklsb659o/GirlGames_DLC" target="_blank">官方下载链接</a>统一解压码：114514</p>
+		      <div class="content-container">
+		        <div class="content-item" id="g_sakurahime_1">
+		          <a href="https://pan.baidu.com/s/1Zn5yOCTtN2T141zl9IdbCg?pwd=1145" target="_blank">
+		            <h3>Sakura Hime</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1732740/header.jpg?t=1747293036">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_sakurahime_2">
+		          <a href="https://pan.baidu.com/s/1ynuxgz0APC7BIzntblnMUg?pwd=1145" target="_blank">
+		            <h3>Sakura Hime 2</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1223870/header.jpg?t=1748938618">
+		          </a>
+		        </div>
+		        <div class="content-item" id="g_sakurahime_3">
+		          <a href="https://pan.baidu.com/s/14EtvZ2j4BoVJRcn8Dd1N-g?pwd=1145" target="_blank">
+		            <h3>Sakura Hime 3</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/1996210/header.jpg?t=1747293036">
+		          </a>
+		        </div>
+				<div class="content-item" id="g_sakurahime_4">
+				  <a href="https://pan.baidu.com/s/1CLFyOwfXg7n9GU5ZSMmakQ?pwd=1145" target="_blank">
+				    <h3>Sakura Hime 4</h3>
+				    <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2070850/header.jpg?t=1747293037">
+				  </a>
+				</div>
+		        <div class="content-item" id="g_sakurahime_5">
+		          <a href="https://pan.baidu.com/s/11Y0c4YdVXrAZWEcrVMl_pg?pwd=1145" target="_blank">
+		            <h3>Sakura Hime 5</h3>
+		            <img src="https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/2938850/header.jpg?t=1747293052">
 		          </a>
 		        </div>
 		      </div>
@@ -964,449 +1034,7 @@
 				</div>
 			</div>
 		</footer>
-		<script>
-			// 搜索功能实现
-			document.addEventListener('DOMContentLoaded', function() {
-				assignSectionIds(); 
-				const aliasMap = {
-				  /* -------- NEKOPARA -------- */
-				  "NEKOPARA After": ["NEKOPARA After", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
-				  "NEKOPARA Vol_1": ["NEKOPARA Vol_1", "猫娘 Vol.1", "nekopara vol1", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
-				  "NEKOPARA Vol_2": ["NEKOPARA Vol_2", "猫娘 Vol.2", "nekopara vol2", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
-				  "NEKOPARA Vol_3": ["NEKOPARA Vol_3", "猫娘 Vol.3", "nekopara vol3", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
-				  "NEKOPARA Vol_4": ["NEKOPARA Vol_4", "猫娘 Vol.4", "nekopara vol4", "猫娘乐园", "巧克力与香子兰", "nekopara", "猫娘","ネコぱら","艹猫","C猫"],
-				
-				  /* -------- Seek Girl -------- */
-				  "seek girl": ["seek girl", "SeekGirl", "seekgirl", "SG1"],
-				  "seek girl 2": ["seek girl 2", "SG2", "seekgirl2"],
-				  "seek girl 3": ["seek girl 3", "SG3", "seekgirl3"],
-				  "seek girl 4": ["seek girl 4", "SG4", "seekgirl4"],
-				  "seek girl 5": ["seek girl 5", "SG5", "seekgirl5"],
-				  "seek girl 6": ["seek girl 6", "SG6", "seekgirl6"],
-				  "seek girl 7": ["seek girl 7", "SG7", "seekgirl7"],
-				  "seek girl 8": ["seek girl 8", "SG8", "seekgirl8"],
-				
-				  /* -------- 狂想曲 -------- */
-				  "夏日狂想曲✳️": ["夏日狂想曲✳️", "夏狂", "Summer Rhapsody"],
-				  "冬日狂想曲": ["冬日狂想曲", "冬狂", "Winter Rhapsody"],
-				
-				  /* -------- Lost -------- */
-				  "lost 1": ["lost 1", "Lost1"],
-				  "lost 2": ["lost 2", "Lost2"],
-				  "lost:find": ["lost:find", "Lost:Find", "Lost Find"],
-				
-				  /* -------- 苦主 -------- */
-				  "苦主1": ["苦主1", "苦主救助中心"],
-				  "苦主3": ["苦主3", "苦主救助中心3"],
-				
-				  /* -------- Primal Hearts -------- */
-				  "Primal Hearts": ["Primal Hearts", "PH1"],
-				  "Primal Hearts 2": ["Primal Hearts 2", "PH2"],
-				
-				  /* -------- Miss Neko -------- */
-				  "miss neko": ["miss neko", "Miss Neko", "MissNeko", "猫娘女仆", "女仆猫娘"],
-				  "miss neko 2": ["miss neko 2", "Miss Neko 2", "猫娘女仆", "女仆猫娘"],
-				  "miss neko 3": ["miss neko 3", "Miss Neko 3", "猫娘女仆", "女仆猫娘"],
-				
-				  /* -------- Sakura Isekai -------- */
-				  "Sakura Isekai Adventure 1": ["Sakura Isekai Adventure 1", "樱花异世界1"],
-				  "Sakura Isekai Adventure 2": ["Sakura Isekai Adventure 2", "樱花异世界2"],
-				  "Sakura Isekai Adventure 3": ["Sakura Isekai Adventure 3", "樱花异世界3"],
-				
-				  /* -------- 女装系列 -------- */
-				  "女裝神社": ["女裝神社", "女装神社"],
-				  "女装神话": ["女装神话"],
-				  "女装创世记": ["女装创世记"],
-				  "女装百合畑": ["女装百合畑", "百合畑"],
-				
-				  /* -------- 单发 & 其它 -------- */
-				  "Mirror": ["Mirror", "魔镜", "mirror"],
-				  "千恋万花": ["千恋万花", "千恋", "万花", "Senren＊Banka","千恋＊万花","柚子","yuzusoft","ゆずソフト"],
-				  "闪亮女友": ["闪亮女友", "闪亮","柚子","yuzusoft","ゆずソフト"],
-				  "Dream Date": ["Dream Date"],
-				  "与死神度过的七日": ["与死神度过的七日", "7 Days with Death"],
-				  "Taboos: Cracks": ["Taboos: Cracks"],
-				  "Eternal Fantasy": ["Eternal Fantasy"],
-				  "极乐妹土！3": ["极乐妹土！3", "极乐","月石"],
-				  "箱庭逻辑": ["箱庭逻辑", "Hakoniwa Logic", "箱庭"],
-				  "Summer Pockets REFLECTION BLUE": ["Summer Pockets REFLECTION BLUE", "SP RB", "summer pockets rb"],
-				  "魔女的夜宴": ["魔女的夜宴", "Witch's Banquet", "SABATO", "魔女","柚子","yuzusoft","ゆずソフト"],
-				
-				  /* -------- 完整包 -------- */
-				  "少女神域 少女天狱": ["少女神域 少女天狱", "少女神域","The Garden of Fifth Zoa","少女神域∽少女天狱 -The Garden of Fifth Zoa-","lass","ラス","P+lass"],
-				  "11eyes_resonaforma": ["11eyes_resonaforma", "11eyes", "11eyes Resona Forma","lass","ラス","P+lass"],
-				  "甜蜜女友3": ["甜蜜女友3", "甜蜜女友","アマカノ 3"],
-				  "LimeLight Lemonade Jam": ["LimeLight Lemonade Jam", "limelight","柚子","yuzusoft","ゆずソフト","沁光柠檬即兴曲","ライムライト・レモネードジャム"],
-				  "3days -満ちてゆく刻の彼方で-": ["3days -満ちてゆく刻の彼方で-", "3days","3days～在逝去时间的另一端～","lass","ラス","P+lass"],
-				  "CRACK≡TRICK!":["CRACK≡≡TRICK!","CRACK","水晶社","CRYSTALiA","クラトリ","クラック≡トリック"],
-				  "逝去的你、于馆中萌生的憎恶":["逝去的你、于馆中萌生的憎恶","死棺","死に逝く君、館に芽吹く憎悪","Bug System","濒死轮回的卿于馆中萌生的憎恶"],
-				
-				  /* -------- Steam 代码区 -------- */
-				  "girl jigsaw 2": ["girl jigsaw 2"],
-				  "neomorph": ["neomorph"],
-				  "爱与梦": ["爱与梦"],
-				  "花妖物语": ["花妖物语", "花妖"],
-				  "缪可瓶与魔物娘": ["缪可瓶与魔物娘"],
-				  "某旅行者的偷拍相册": ["某旅行者的偷拍相册", "偷拍相册"],
-				  "love wish": ["love wish"],
-				
-				  /* -------- 汉化补丁 -------- */
-				  "水仙1st": ["水仙1st", "水仙", "Narcissu", "Narcissu 1st"],
-				  "水仙2nd": ["水仙2nd", "水仙", "Narcissu", "Narcissu 2nd"],
-				  "水仙十周年纪念版": ["水仙十周年纪念版", "水仙十周年", "Narcissu"],
-				
-				  /* -------- 手机区 -------- */
-				  "PicACG": ["PicACG", "哔咔"],
-				  "女仆LIFE": ["女仆LIFE", "女仆"],
-				  "onanikki": ["onanikki"]
-				};
-
-			    const searchData = [
-			      /* ========== 分类 category ========== */
-			      { id: 'c_nekopara', name: 'NEKOPARA系列', type: 'category', target: 'nekopara' },
-			      { id: 'c_seekgirl', name: 'seek girl系列', type: 'category', target: 'seek-girl' },
-			      { id: 'c_kuangxiangqu', name: '狂想曲系列', type: 'category', target: 'rhapsody' },
-			      { id: 'c_lost', name: 'lost系列', type: 'category', target: 'lost' },
-			      { id: 'c_kuzhu', name: '苦主系列', type: 'category', target: 'suffering' },
-			      { id: 'c_primalhearts', name: 'Primal Hearts系列', type: 'category', target: 'primal-hearts' },
-			      { id: 'c_missneko', name: 'miss neko系列', type: 'category', target: 'miss-neko' },
-			      { id: 'c_sakuraisekai', name: 'Sakura Isekai Adventure系列', type: 'category', target: 'sakura-isekai' },
-			      { id: 'c_nvzhuang', name: '女装系列', type: 'category', target: 'crossdressing' },
-			      { id: 'c_nonseries', name: '非系列galgame', type: 'category', target: 'non-series' },
-			      { id: 'c_textheavy', name: '非系列galgame（大量文字分类）', type: 'category', target: 'text-heavy' },
-			      { id: 'c_fullpkg', name: '电脑完整包专区', type: 'category', target: 'full-package' },
-			      { id: 'c_steamcode', name: 'steam代码专区', type: 'category', target: 'steam-codes' },
-			      { id: 'c_translation', name: '汉化补丁专区', type: 'category', target: 'translation-patches' },
-			      { id: 'c_mobile',       name: '手机专区',     type: 'category', target: 'mobile' },
-
-			      /* ========== 游戏 game ========== */
-			      { id: 'g_nekopara_after', name: 'NEKOPARA After', type: 'game', target: 'nekopara' },
-			      { id: 'g_nekopara_vol1', name: 'NEKOPARA Vol_1', type: 'game', target: 'nekopara' },
-			      { id: 'g_nekopara_vol2', name: 'NEKOPARA Vol_2', type: 'game', target: 'nekopara' },
-			      { id: 'g_nekopara_vol3', name: 'NEKOPARA Vol_3', type: 'game', target: 'nekopara' },
-			      { id: 'g_nekopara_vol4', name: 'NEKOPARA Vol_4', type: 'game', target: 'nekopara' },
-			      { id: 'g_seekgirl_1', name: 'seek girl', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_2', name: 'seek girl 2', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_3', name: 'seek girl 3', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_4', name: 'seek girl 4', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_5', name: 'seek girl 5', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_6', name: 'seek girl 6', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_7', name: 'seek girl 7', type: 'game', target: 'seek-girl' },
-			      { id: 'g_seekgirl_8', name: 'seek girl 8', type: 'game', target: 'seek-girl' },
-			      { id: 'g_summer_rhapsody', name: '夏日狂想曲', type: 'game', target: 'rhapsody' },
-			      { id: 'g_winter_rhapsody', name: '冬日狂想曲', type: 'game', target: 'rhapsody' },
-			      { id: 'g_lost_1', name: 'lost 1', type: 'game', target: 'lost' },
-			      { id: 'g_lost_2', name: 'lost 2', type: 'game', target: 'lost' },
-			      { id: 'g_lost_find', name: 'lost:find', type: 'game', target: 'lost' },
-			      { id: 'g_kuzhu_1', name: '苦主1', type: 'game', target: 'suffering' },
-			      { id: 'g_kuzhu_3', name: '苦主3', type: 'game', target: 'suffering' },
-			      { id: 'g_primalhearts_1', name: 'Primal Hearts', type: 'game', target: 'primal-hearts' },
-			      { id: 'g_primalhearts_2', name: 'Primal Hearts 2', type: 'game', target: 'primal-hearts' },
-			      { id: 'g_missneko_1', name: 'miss neko', type: 'game', target: 'miss-neko' },
-			      { id: 'g_missneko_2', name: 'miss neko 2', type: 'game', target: 'miss-neko' },
-			      { id: 'g_missneko_3', name: 'miss neko 3', type: 'game', target: 'miss-neko' },
-			      { id: 'g_sakuraisekai_1', name: 'Sakura Isekai Adventure 1', type: 'game', target: 'sakura-isekai' },
-			      { id: 'g_sakuraisekai_2', name: 'Sakura Isekai Adventure 2', type: 'game', target: 'sakura-isekai' },
-			      { id: 'g_sakuraisekai_3', name: 'Sakura Isekai Adventure 3', type: 'game', target: 'sakura-isekai' },
-			      { id: 'g_nvzhuang_shensha', name: '女裝神社', type: 'game', target: 'crossdressing' },
-			      { id: 'g_nvzhuang_shenhua', name: '女装神话', type: 'game', target: 'crossdressing' },
-			      { id: 'g_nvzhuang_chuangshi', name: '女装创世记', type: 'game', target: 'crossdressing' },
-			      { id: 'g_nvzhuang_baihe', name: '女装百合畑', type: 'game', target: 'crossdressing' },
-			      { id: 'g_mirror', name: 'Mirror', type: 'game', target: 'non-series' },
-			      { id: 'g_qianlianwanhua', name: '千恋万花', type: 'game', target: 'non-series' },
-			      { id: 'g_shanliangnvyou', name: '闪亮女友', type: 'game', target: 'non-series' },
-			      { id: 'g_dreamdate', name: 'Dream Date', type: 'game', target: 'non-series' },
-			      { id: 'g_death_7days', name: '与死神度过的七日', type: 'game', target: 'non-series' },
-			      { id: 'g_taboos_cracks', name: 'Taboos: Cracks', type: 'game', target: 'non-series' },
-			      { id: 'g_eternal_fantasy', name: 'Eternal Fantasy', type: 'game', target: 'non-series' },
-			      { id: 'g_jilemeitu_3', name: '极乐妹土！3', type: 'game', target: 'non-series' },
-			      { id: 'g_hakoniwa_logic', name: '箱庭逻辑', type: 'game', target: 'text-heavy' },
-			      { id: 'g_summer_pockets_rb', name: 'Summer Pockets REFLECTION BLUE', type: 'game', target: 'text-heavy' },
-			      { id: 'g_witch_banquet', name: '魔女的夜宴', type: 'game', target: 'text-heavy' },
-			      { id: 'g_shinjo_shinjo', name: '少女神域 少女天狱', type: 'game', target: 'full-package' },
-			      { id: 'g_11eyes_resonaforma', name: '11eyes_resonaforma', type: 'game', target: 'full-package' },
-			      { id: 'g_tianmi_3', name: '甜蜜女友3', type: 'game', target: 'full-package' },
-			      { id: 'g_limelight_lemonade', name: 'LimeLight Lemonade Jam', type: 'game', target: 'full-package' },
-			      { id: 'g_3days', name: '3days -満ちてゆく刻の彼方で-', type: 'game', target: 'full-package' },
-			      { id: 'g_girl_jigsaw_2', name: 'girl jigsaw 2', type: 'game', target: 'steam-codes' },
-			      { id: 'g_neomorph', name: 'neomorph', type: 'game', target: 'steam-codes' },
-			      { id: 'g_love_dream', name: '爱与梦', type: 'game', target: 'steam-codes' },
-			      { id: 'g_flower_yokai', name: '花妖物语', type: 'game', target: 'steam-codes' },
-			      { id: 'g_milk_bottle_musume', name: '缪可瓶与魔物娘', type: 'game', target: 'steam-codes' },
-			      { id: 'g_traveler_album', name: '某旅行者的偷拍相册', type: 'game', target: 'steam-codes' },
-			      { id: 'g_love_wish', name: 'love wish', type: 'game', target: 'steam-codes' },
-			      { id: 'g_narcissu_1', name: '水仙1st', type: 'game', target: 'translation-patches' },
-			      { id: 'g_narcissu_2', name: '水仙2nd', type: 'game', target: 'translation-patches' },
-			      { id: 'g_narcissu_10th', name: '水仙十周年纪念版', type: 'game', target: 'translation-patches' },
-			      { id: 'g_picacg', name: 'PicACG', type: 'game', target: 'mobile' },
-			      { id: 'g_maid_life', name: '女仆LIFE', type: 'game', target: 'mobile' },
-			      { id: 'g_onanikki', name: 'onanikki', type: 'game', target: 'mobile' },
-				  { id: 'g_shiqudeni', name:'逝去的你、于馆中萌生的憎恶', type:'game' ,target:'full-package'},
-				  { id: 'g_CRACK', name:'CRACK≡TRICK!', type:'game',target:'full-package'}
-			    ];
-				
-				function expandQueryWithAlias(query) {
-				  const lower = query.toLowerCase();
-				  const expanded = new Set([query]);
-				  for (const [std, synonyms] of Object.entries(aliasMap)) {
-				    const matched = synonyms.some(s => s.toLowerCase().includes(lower) || lower.includes(s.toLowerCase()));
-				    if (matched) expanded.add(std);
-				  }
-				  return [...expanded];
-				}
-
-
-			    function assignSectionIds() {
-			        const sections = document.querySelectorAll('.section');
-			        sections.forEach(section => {
-			            const h2 = section.querySelector('h2');
-			            if (!h2) return;
-			    
-			            let id = h2.textContent
-			                .toLowerCase()
-			                .replace(/[^\w\u4e00-\u9fa5]/g, '-')
-			                .replace(/-+/g, '-')
-			                .replace(/^-|-$/g, '');
-			    
-			            // 手动映射一些特殊标题
-			            const manualMap = {
-			                '手机专区': 'mobile',
-			                'steam代码专区': 'steam-codes',
-			                '汉化补丁专区（非R18补丁)': 'translation-patches',
-			                '电脑完整包专区': 'full-package',
-			                '非系列galgame（大量文字分类)': 'text-heavy',
-			                '非系列galgame': 'non-series',
-			                '女装系列': 'crossdressing',
-			                'miss neko系列': 'miss-neko',
-			                'sakura isekai adventure系列': 'sakura-isekai',
-			                'primal hearts系列': 'primal-hearts',
-			                '苦主系列': 'suffering',
-			                'lost系列': 'lost',
-			                '狂想曲系列': 'rhapsody',
-			                'seek girl系列': 'seek-girl',
-			                'nekopara系列': 'nekopara'
-			            };
-
-			    
-			            const manualId = manualMap[h2.textContent.trim()];
-			            if (manualId) {
-			                section.id = manualId;
-			            } else if (id) {
-			                section.id = id;
-			            }
-			        });
-			    }
-
-			
-			    // 获取DOM元素
-			    const searchInput = document.getElementById('searchInput');
-			    const searchBtn = document.getElementById('searchBtn');
-			    const searchDropdown = document.getElementById('searchDropdown');
-			    
-			    let currentHighlightIndex = -1;
-			    let filteredResults = [];
-			
-			    // 搜索功能
-			    function performSearch(query) {
-			      const queries = expandQueryWithAlias(query.trim());
-			      const lowerQueries = queries.map(q => q.toLowerCase());
-			    
-			      if (!query.trim()) {
-			        hideDropdown();
-			        return;
-			      }
-			    
-			      filteredResults = searchData.filter(item =>
-			        lowerQueries.some(q => item.name.toLowerCase().includes(q))
-			      );
-			    
-			      displayDropdown(filteredResults);
-			    }
-			    
-			    // 显示下拉菜单
-			    function displayDropdown(results) {
-			        if (results.length === 0) {
-			            searchDropdown.innerHTML = '<div class="search-dropdown-item">未找到匹配项</div>';
-			        } else {
-			            searchDropdown.innerHTML = results.map((item, index) =>
-			                `<div class="search-dropdown-item" data-index="${index}" data-target="${item.target}">
-			                    <strong>${item.name}</strong> - ${item.type === 'category' ? '分类' : '游戏'}
-			                </div>`
-			            ).join('');
-			        }
-			        
-			        searchDropdown.classList.add('active');
-			        currentHighlightIndex = 0;
-			    }
-			    
-			    // 隐藏下拉菜单
-			    function hideDropdown() {
-			        searchDropdown.classList.remove('active');
-			        currentHighlightIndex = -1;
-			    }
-				
-				
-				function navigateToTarget(targetId) {
-				    console.log('正在跳转到目标:', targetId);
-				    
-				    // 第一重：精确ID匹配
-				    let targetElement = document.getElementById(targetId);
-				    
-				    // 第二重：部分ID匹配
-				    if (!targetElement) {
-				        targetElement = document.querySelector(`[id*="${targetId}"]`);
-				    }
-				    
-				    // 第三重：标题模糊匹配
-				    if (!targetElement) {
-				        const allSections = document.querySelectorAll('section');
-				        for (let section of allSections) {
-				            const h2 = section.querySelector('h2');
-				            if (h2) {
-				                const sectionTitle = h2.textContent.toLowerCase()
-				                    .replace(/[^\w\u4e00-\u9fa5]/g, '')
-				                    .replace(/系列|专区/g, '');
-				                const searchTarget = targetId.toLowerCase()
-				                    .replace(/[^\w\u4e00-\u9fa5]/g, '')
-				                    .replace(/-/g, '');
-				                
-				                if (sectionTitle.includes(searchTarget) || searchTarget.includes(sectionTitle)) {
-				                    targetElement = section;
-				                    break;
-				                }
-				            }
-				        }
-				    }
-				    
-				    // 第四重：内容项匹配
-				    if (!targetElement) {
-				        const contentItems = document.querySelectorAll('.content-item');
-				        for (let item of contentItems) {
-				            const h3 = item.querySelector('h3');
-				            if (h3 && h3.textContent.toLowerCase().includes(targetId.toLowerCase())) {
-				                targetElement = item;
-				                break;
-				            }
-				        }
-				    }
-				
-				    if (targetElement) {
-				        console.log('找到目标元素:', targetElement);
-				        const navbarHeight = document.querySelector('.navbar').offsetHeight;
-				        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-				
-				        window.scrollTo({
-				            top: targetPosition,
-				            behavior: 'smooth'
-				        });
-				
-				        // 高亮动画
-				        targetElement.style.transition = 'all 0.5s ease';
-				        targetElement.style.boxShadow = '0 0 0 3px rgba(77, 182, 172, 0.5)';
-				        setTimeout(() => {
-				            targetElement.style.boxShadow = 'none';
-				        }, 2000);
-				    } else {
-				        console.warn(`未找到目标分区：${targetId}`);
-				        // 提供用户反馈，但不要用alert，用更友好的方式
-				        const originalText = searchInput.placeholder;
-				        searchInput.placeholder = `未找到"${targetId}"，请尝试其他搜索词`;
-				        setTimeout(() => {
-				            searchInput.placeholder = originalText;
-				        }, 3000);
-				        
-				        // 仍然滚动到顶部，但提供反馈
-				        window.scrollTo({ top: 0, behavior: 'smooth' });
-				    }
-				
-				    hideDropdown();
-				    searchInput.value = '';
-				}
-			        
-			    // 事件监听
-			    searchInput.addEventListener('input', function() {
-			        performSearch(this.value);
-			    });
-			    
-			    searchInput.addEventListener('keydown', function(e) {
-			        if (e.key === 'Enter') {
-			            if (filteredResults.length > 0 && currentHighlightIndex >= 0) {
-			                const selectedItem = filteredResults[currentHighlightIndex];
-			                navigateToTarget(selectedItem.target);
-			            }
-			        } else if (e.key === 'ArrowDown') {
-			            e.preventDefault();
-			            if (currentHighlightIndex < filteredResults.length - 1) {
-			                currentHighlightIndex++;
-			                updateHighlight();
-			            }
-			        } else if (e.key === 'ArrowUp') {
-			            e.preventDefault();
-			            if (currentHighlightIndex > 0) {
-			                currentHighlightIndex--;
-			                updateHighlight();
-			            }
-			        } else if (e.key === 'Escape') {
-			            hideDropdown();
-			        }
-			    });
-			    
-			    searchBtn.addEventListener('click', function() {
-			        performSearch(searchInput.value);
-			        if (filteredResults.length > 0 && currentHighlightIndex >= 0) {
-			            const selectedItem = filteredResults[currentHighlightIndex];
-			            navigateToTarget(selectedItem.target);
-			        }
-			    });
-			    
-			    // 下拉菜单项点击事件
-			    searchDropdown.addEventListener('click', function(e) {
-			        const item = e.target.closest('.search-dropdown-item');
-			        if (item && item.dataset.index !== undefined) {
-			            const index = parseInt(item.dataset.index);
-			            const selectedItem = filteredResults[index];
-			            navigateToTarget(selectedItem.target);
-			        }
-			    });
-			    
-			    // 更新高亮项
-			    function updateHighlight() {
-			        const items = searchDropdown.querySelectorAll('.search-dropdown-item');
-			        items.forEach((item, index) => {
-			            if (index === currentHighlightIndex) {
-			                item.classList.add('highlight');
-			            } else {
-			                item.classList.remove('highlight');
-			            }
-			        });
-			    }
-			    
-			    // 点击页面其他区域关闭下拉菜单
-			    document.addEventListener('click', function(e) {
-			        if (!e.target.closest('.search-container')) {
-			            hideDropdown();
-			        }
-			    });
-			    
-			    // 移动端菜单切换时显示/隐藏搜索框
-			    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-			    if (mobileMenuBtn) {
-			        mobileMenuBtn.addEventListener('click', function() {
-			            // 移动端时，搜索框在菜单展开时显示
-			            if (window.innerWidth <= 900) {
-			                const searchContainer = document.querySelector('.search-container');
-			                if (searchContainer) {
-			                    const navLinks = document.querySelector('.nav-links');
-			                    if (navLinks.classList.contains('active')) {
-			                        searchContainer.style.display = 'block';
-			                    } else {
-			                        searchContainer.style.display = 'none';
-			                    }
-			                }
-			            }
-			        });
-			    }
-			});
+		<script>		
 			document.addEventListener('DOMContentLoaded', function() {
 				const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 				const navLinks = document.querySelector('.nav-links');
