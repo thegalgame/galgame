@@ -76,7 +76,7 @@
 					&lt;/section&gt;
 
 #### Step-2 更新分区映射（manualMap）
-找到`const manualMap = {`，添加以下内容（注意末尾逗号）：
+找到在`dict.js`中`const manualMap = {`，添加以下内容（注意末尾逗号）：
 
 '123分区': 'section-123',
 
