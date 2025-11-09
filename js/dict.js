@@ -62,6 +62,7 @@ export const aliasMap = {
   "箱庭逻辑": ["箱庭逻辑", "Hakoniwa Logic", "箱庭"],
   "Summer Pockets REFLECTION BLUE": ["Summer Pockets REFLECTION BLUE", "SP RB", "summer pockets rb"],
   "魔女的夜宴": ["魔女的夜宴", "Witch's Banquet", "SABATO", "魔女","柚子","yuzusoft","ゆずソフト"],
+  "Endless Jade Sea -Midori no Umi-":["Endless Jade Sea -Midori no Umi-"],
   				
   /* -------- 完整包 -------- */
   "少女神域 少女天狱": ["少女神域 少女天狱", "少女神域","The Garden of Fifth Zoa","少女神域∽少女天狱 -The Garden of Fifth Zoa-","lass","ラス","P+lass"],
@@ -160,6 +161,7 @@ export const searchData = [
  { id: 'g_mirror', name: 'Mirror', type: 'game', target: 'non-series' },
  { id: 'g_qianlianwanhua', name: '千恋万花', type: 'game', target: 'non-series' },
  { id: 'g_shanliangnvyou', name: '闪亮女友', type: 'game', target: 'non-series' },
+ { id: 'g_endless', name: 'Endless Jade Sea -Midori no Umi-', type: 'game', target: 'non-series' },
  { id: 'g_dreamdate', name: 'Dream Date', type: 'game', target: 'non-series' },
  { id: 'g_death_7days', name: '与死神度过的七日', type: 'game', target: 'non-series' },
  { id: 'g_taboos_cracks', name: 'Taboos: Cracks', type: 'game', target: 'non-series' },
