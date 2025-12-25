@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/head.css">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap"
+			rel="stylesheet">
+		<title>少女神域∽少女天獄 -The Garden of Fifth Zoa-</title>
+		<style>
+			h1 { font-size: 2.5rem; }
+			h2 { font-size: 2rem; }
+			h3 { font-size: 1.75rem; }
+			h4 { font-size: 1.5rem; }
+			h5 { font-size: 1.25rem; }
+			h6 { font-size: 1rem; }
+			
+			.container {
+			    max-width: 1200px;
+			    margin: 0 auto;
+			    padding: 20px;
+			}
+			
+			.logo-box {
+			    width: 100%;
+			    height: auto;
+			    margin: 0 auto 30px;
+			    text-align: center;
+			    padding: 20px;
+			    border-radius: 10px;
+			}
+			.logo-box img {
+			    max-width: 100%;
+			    height: auto;
+			}
+			.main-title {
+			    color: #ff69b4;
+			    text-align: center;
+			    margin-bottom: 30px;
+			}
+			
+			.notice-box {
+			    background: #111;
+			    padding: 20px;
+			    border-radius: 10px;
+			    margin-bottom: 30px;
+			    text-align: left;
+			}
+			
+			.version-section {
+			    margin-bottom: 40px;
+			}
+			.version-number {
+			    color: #ffd700;
+			    font-size: 1.5rem;
+			    font-weight: bold;
+			    margin-bottom: 10px;
+			}
+			.version-content {
+			    color: #fff;
+			    margin-bottom: 15px;
+			}
+			
+			a {
+			    color: #ff69b4;
+			    text-decoration: none;
+			}
+			a:hover {
+			    color: #ff1493;
+			}
+			.staff-section {
+			    margin-top: 40px;
+			}
+			.toggle-button {
+			    background: #333;
+			    color: #ff69b4;
+			    padding: 10px 20px;
+			    border: none;
+			    cursor: pointer;
+			    font-size: 1.1rem;
+			    border-radius: 5px;
+			    display: block;
+			    margin: 0 auto;
+			}
+			.staff-content {
+				max-height: 400px;
+				overflow-y: auto; 
+			    display: none;
+			    text-align: center;
+			    padding: 20px;
+			    background: #111;
+			    border-radius: 10px;
+			    margin-top: 10px;
+			}
+			.staff-content.show {
+			    display: block;
+			}
+			.staff-content::-webkit-scrollbar {
+			    width: 14px;
+			}
+			.staff-content::-webkit-scrollbar-thumb {
+			    background: #ff69b4;
+			    border-radius: 7px;
+			}
+			.staff-content::-webkit-scrollbar-thumb:hover {
+			    background: #ff1493;
+			}
+			.staff-content::-webkit-scrollbar-track {
+			    background: #222;
+			    border-radius: 7px;
+			}
+			.staff-title {
+			    color: #ff69b4;
+			    font-weight: bold;
+			    font-size: 1.3rem;
+			    margin-bottom: 15px;
+			}
+			.staff-subtitle {
+			    color: #ff69b4;
+			    font-size: 1.1rem;
+			    font-weight: bold;
+			    text-align: center;
+			    margin-bottom: 10px;
+			}
+			.staff-name {
+			    color: #fff;
+			    font-weight: bold;
+			    margin-bottom: 10px;
+			}
+		
+			.copyright {
+			    text-align: center;
+			    margin-top: 40px;
+			    padding: 20px;
+			    color: #666;
+			    font-size: 0.9rem;
+			}
+			
+			@media (max-width: 780px) {
+			    .container { padding: 15px; }
+			    h1 { font-size: 2rem; }
+			    h2 { font-size: 1.75rem; }
+			    h3 { font-size: 1.5rem; }
+			    h4 { font-size: 1.25rem; }
+			    h5 { font-size: 1.1rem; }
+			    h6 { font-size: 1rem; }
+			    .version-number { font-size: 1.3rem; }
+			}
+			@media (max-width: 480px) {
+			    .container { padding: 10px; }
+			    h1 { font-size: 1.75rem; }
+			    h2 { font-size: 1.5rem; }
+			    h3 { font-size: 1.25rem; }
+			    h4 { font-size: 1.1rem; }
+			    h5 { font-size: 1rem; }
+			    h6 { font-size: 0.9rem; }
+			    .version-number { font-size: 1.1rem; }
+			    .small-image { width: 72px; height: 40px; }
+			    .line-logo { width: 150px; height: 30px; }
+			}
+			span.warn {
+			  font-weight: bold;
+			  color: #ff0000;
+			}
+			.footer-box {
+			    width: 100vw;
+			    margin-left: calc(-50vw + 50%);
+			    background: #111;
+			    padding: 30px 0;
+			    margin-top: 60px;
+			    text-align: center;
+			    color: #666;
+			    font-size: 0.9rem;
+			}
+			.version-content ul {
+			    margin-left: 40px;
+			}
+			#backToTopBtn {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				display: none;
+				padding: 10px 20px;
+				background-color: #ff69b4;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				z-index: 1000;
+				font-size: 14px;
+				outline: none;
+				transition: opacity 0.3s ease;
+			}
+			#backToTopBtn:hover {
+				opacity: 0.8;
+			}
+			.cd-code-display {
+			    display: flex;
+			    flex-direction: column;
+			    background: #1a1a1a;
+			    border-radius: 8px;
+			    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+			    overflow: hidden;
+			    margin-bottom: 40px;
+			}
+			.cd-code-header {
+			    padding: 15px 20px;
+			    background: #2d2d2d;
+			    border-bottom: 1px solid rgba(255,255,255,.1);
+			    display: flex;
+			    justify-content: space-between;
+			    align-items: center;
+			}
+			.cd-code-header h2 {
+			    color: #f0f0f0;
+			    font-size: 1.4rem;
+			    font-family: 'Montserrat',sans-serif;
+			    font-weight: 500;
+			    margin: 0;
+			}
+			.cd-code-header p {
+			    margin: 5px 0 0;
+			    color: #c0c0c0;
+			    font-size: .95rem;
+			}
+			.cd-code-content {
+			    flex: none;
+			    padding: 20px;
+			    overflow: auto;
+			    background: #121212;
+			    color: #e0e0e0;
+			    font-family: 'Roboto','Consolas',monospace;
+			    font-size: 14px;
+			    line-height: 1.5;
+			    position: relative;
+			    scrollbar-width: thin;
+			    scrollbar-color: #4db6ac #121212;
+			}
+			.cd-code-content::-webkit-scrollbar {
+			    width: 10px;
+			    height: 10px;
+			}
+			.cd-code-content::-webkit-scrollbar-track {
+			    background: #121212;
+			}
+			.cd-code-content::-webkit-scrollbar-thumb {
+			    background: #4db6ac;
+			    border-radius: 5px;
+			}
+			.cd-code-content::-webkit-scrollbar-thumb:hover {
+			    background: #26a69a;
+			}
+			.cd-code-content p,
+			.cd-code-content ol,
+			.cd-code-content ul,
+			.cd-code-content li {
+			    margin: 0 0 1em;
+			}
+			.cd-code-content strong {
+			    color: #f0f0f0;
+			}
+			.cd-code-content u strong,
+			.cd-code-content strong.u {
+			    font-weight: bold;
+			    text-decoration: underline;
+			    color: #d93025;
+			}
+			.cd-code-content code {
+			    background: rgba(255,255,255,.08);
+			    padding: 2px 4px;
+			    border-radius: 3px;
+			    font-size: 13px;
+			    color: #50fa7b;
+			}
+			.cd-pre {
+			    margin: 0;
+			    white-space: pre-wrap;
+			    word-break: break-word;
+			    tab-size: 4;
+			    user-select: all;
+			    cursor: text;
+			    min-height: 100%;
+			}
+			.cd-selection-hint {
+			    position: fixed;
+			    bottom: 20px;
+			    left: 50%;
+			    transform: translateX(-50%);
+			    background: rgba(0,0,0,.7);
+			    color: #fff;
+			    padding: 10px 20px;
+			    border-radius: 4px;
+			    font-size: 14px;
+			    animation: cd-fadeInOut 3s forwards;
+			    z-index: 1000;
+			}
+			@keyframes cd-fadeInOut {
+			    0%   { opacity: 0; }
+			    20%  { opacity: 1; }
+			    80%  { opacity: 1; }
+			    100% { opacity: 0; }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-container">
+			<div class="background-image bg-image-1"></div>
+			<div class="background-image bg-image-2"></div>
+			<div class="background-image bg-image-3"></div>
+		</div>
+		
+		<nav class="navbar">
+			<div class="nav-container">
+				<div class="logo-container">
+					<a href="index.html" class="logo-text">网页说明</a>
+				</div>
+				<ul class="nav-links">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="Magic-Number.html">扩展名小工具</a></li>
+					<li><a href="QA.html">网页说明</a></li>
+					<li><a href="html.html">网址合集</a></li>
+					<li><a href="version.html">版本信息</a></li>
+				</ul>
+				<button class="mobile-menu-btn">☰</button>
+			</div>
+		</nav>
+		
+		<div class="container">
+			
+			<h1 class="main-title">少女神域∽少女天獄 -The Garden of Fifth Zoa-</h1>
+<div class="content-item">
+		          <a href="https://pan.baidu.com/s/1dQZK2C0Dqay5qA0V-w0tDw?pwd=1145" target="_blank">
+		            <h3>少女神域 少女天狱</h3>
+					<p>点击此处下载原汉化版游戏</p>
+		            <p>解压码：heimanba</p>
+		            <p>文件压缩格式为一级压缩：.rar，二级压缩：.7z。一二级解压密码是一样的</p>
+		          </a>
+</div>
+			<div class="notice-box">
+				<header style="text-align: center;">
+				    <h3 style="color: #ff69b4; margin-bottom: 10px; display: inline-block;">注意事项</h3>
+				</header>
+
+				<p>请务必仔细阅读以下信息：</p>
+				<ul style="margin-left: 20px; margin-top: 10px;">
+					<li><span class="warn">【重要须知】本游戏全部版权归原著作权方所有，移植版仅供个人学习与交流，严禁用于任何商业用途。</span></li>
+					<li>原版基于 Kirikiri2（v1.01）开发，现已完整迁移至 KirikiriZ，所用源码均为正版资源。</li>
+					<li>快捷菜单仅 SKIP 与 AUTO 可正常使用，其余选项暂有异常；键盘快捷键与主窗口菜单均不受影响，可放心操作。如果你有能力解决此问题，欢迎到<a href="https://space.bilibili.com/87412647?spm_id_from=333.1007.0.0" target="_blank">b站联系我</a></li>
+					<li>移植源码仅含日文文本，无中文。可搭配 <a href="https://docs.lunatranslator.org/en/README.html" target="_blank">LunaTranslator</a> 等工具实现实时翻译。</li>
+					<li>KirikiriZ 窗口菜单内置全解锁功能，若在清空缓存后首次运行游戏时出现报错弹窗，请直接忽略即可。</li>
+				</ul>
+			</div>
+			<div class="content-item">
+					          <a href="https://pan.baidu.com/s/13mOZ2mrE9ATcX95H4H2cjw?pwd=1145" target="_blank">
+								<h3>点击此处下载kirikiriz版本日文版游戏</h3>
+					          </a>
+			</div>
+			<div class="version-section">
+				<div class="version-number">版本 1.10</div>
+				<div class="version-info">发布日期：2025-12-22</div>
+				<div class="version-content">
+					<ul style="margin-left: 20px;">
+						<li>修复了Lass遗留的CSV隐性报错问题：データ定義ファイルが存在してません　chname:恂 posename:ポーズ・正面　filename:syun00等有关恂的隐性报错问题。</li>
+						<li>在CG鉴赏页面新增共计154张官方图。这些图均来源于原Lass官网（并非同人/二创图）。如确定，我将在图片名称后加上其对应上第一次在官网出现的日期。一些图由于尺寸关系，就没有做全屏。由于图片年代久远，画质问题就这样没办法了。一些特典的图片会有“sample”的字样，这个也没办法，能找到图算不错了。造成不便的多多担待。该部分图片由于与主线剧情脱轨，因此，你必须使用开发者工具中鉴赏全开功能（デバッグ→鑑賞モード全ON），否则无法查看。</li>
+						<ul>
+							<li>特典CD封面（共2张）</li>
+							<li>表情包图（共80张）</li>
+							<li>4女主角小剧场图（共28张）</li>
+							<li>官方设定用语集（共19张）</li>
+							<li>4女主角田村联名电话卡图（共4张）（首次出现日期：2011/12/21）</li>
+							<li>迪希色纸（1张）（首次出现日期：2013/3/22）</li>
+							<li>迪希特典图（共3张）（首次出现日期：2013/3/19）</li>
+							<li>愛莉特典图（共4张）（首次出现日期：2013/3/19；2013/3/28）</li>
+							<li>祥娜特典图（共3张）（首次出现日期：2013/4/4；2013/4/6）</li>
+							<li>祥娜色纸（1张）（首次出现日期：2013/3/28）</li>
+							<li>祥娜等身抱枕图（共2张）（首次出现日期：2013/3/22）</li>
+							<li>碧織等身抱枕图（共2张）（首次出现日期：2013/3/27）</li>
+							<li>碧織线稿图（1张）（首次出现日期：2013/3/27）</li>
+							<li>碧織特典图（1张）（首次出现日期：2013/3/19）</li>
+							<li>其他图（共3张）（首次出现日期：2013/4/3）</li>
+						</ul>
+						<li>为了避免污染原有的剧本文件，将原有剧本文件中为了播放视频新加的标签全部删除，恢复其原有的样子。新增对应的单独txt文件以播放视频。因此，若要使用此功能，你也必须使用鉴赏全开功能。</li>
+						<li>在H回想页面新增第三个子页面，播放Lass的世界观（截止至本游戏前）以及当年剣技マナ的个人访谈。在个人访谈中，你可以了解到很多游戏里没有说明的东西。此功能仍然需要你使用鉴赏全开功能才可体验。<span class="warn">注：我手上的资料已经不是日语原版的一手资料，是经过汉化后的繁体中文版本。</span>从上到下的顺序是：</li>
+						<ul>
+							<li>Lass世界观</li>
+							<li>剣技マナ的个人访谈</li>
+						</ul>
+						<li>替换了一下视频播放UI为已有的UI，虽然重复，但是不再使用“未开放”的图片代替。</li>
+						<li>本网页新增回到顶部按钮</li>
+						<li>注：这些新增的功能我实际上是有意为之将其作为隐藏功能。如果你不想使用，那就不使用全开功能，以体验原汁原味的原版游戏（只有有没有三首完整版bgm的区别）。因为我个人技术力、资源有限，新加的界面和功能不尽完美。如果你想使用这些功能，那就使用鉴赏全开。<span class="warn">并且需要注意，若你在全开后看过回想页面中的某个新增的剧情/视频，那么即使你关掉全开，他都会显示为“可查看”状态</span></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="version-section">
+				<div class="version-number">版本 1.03</div>
+				<div class="version-info">发布日期：2025-12-18</div>
+				<div class="version-content">
+					<ul style="margin-left: 20px;">
+						<li>在H回想页面，新增两个子页面以播放游戏中的6个视频，目前如果需要体验该功能可使用窗口自带的开发者工具中鉴赏全开功能（デバッグ→鑑賞モード全ON）这个功能可以随时开关，不影响游戏主进程。由于没有图，暂时使用“未开放”的图代替，使用全开功能后按顺序点击即可</li>
+						<ul>
+						<li>第二行左边的“ロード”按钮为三个常规ED，由上到下的顺序是：</li>
+						<ul>
+							<li>迪希エンド/ED</li>
+							<li>愛莉エンド/ED</li>
+							<li>碧織エンド/ED</li>
+						</ul>
+						<li>第二行右边的“ロード”按钮为三个其他类视频，由上到下的顺序是：</li>
+						<ul>
+							<li>OP</li>
+							<li>真结局ED</li>
+							<li>BADED</li>
+						</ul>
+						</ul>
+						<li>移除了不必要的64位dll文件</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="version-section">
+				<div class="version-number">版本 1.02</div>
+				<div class="version-info">发布日期：2025-12-11</div>
+				<div class="version-content">
+					<ul style="margin-left: 20px;">
+						<li>1.在BGM鉴赏页面中，新增了OP/ED的完整版（共3首，原游戏只有缩减版）</li>
+						<ul>
+							<li>「キミ～ツナグ」（long Ver.）</li>
+							<li>「永久より永遠に」（long Ver.）</li>
+							<li>「punitive justice~千年の錯綜~」（long Ver.）</li>
+						</ul>
+						<li>2.系统优化</li>
+						<ul>
+							<li>将patch.xp3移除，并入data.xp3中</li>
+							<li>删除所有.ogg.sli文件。解决kirikiri2遗留问题</li>
+						</ul>
+					</ul>
+				</div>
+			</div>
+
+			<div class="version-section">
+				<div class="version-number">版本 1.01</div>
+				<div class="version-info">发布日期：2025-12-10</div>
+				<div class="version-content">
+					<ul style="margin-left: 20px;">
+						<li>修复了custom.ks的错误报错问题</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="version-section">
+				<div class="version-number">版本 1.0</div>
+				<div class="version-info">发布日期：2025-12-9</div>
+				<div class="version-content">
+					<ul style="margin-left: 20px;">
+						<li>成功将游戏移植至kirikiriz</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="staff-section cd-code-display">
+				<button class="toggle-button" style="background:none; border:none; padding:10px 20px; cursor:pointer; font-size:1.1rem; color:#ff69b4; display:block; margin:0 auto;" 
+            onmouseover="this.style.color='#ff1493'" 
+            onmouseout="this.style.color='#ff69b4'"
+            onclick="this.nextElementSibling.classList.toggle('show')">
+            有关游戏内菜单栏无法使用的详细说明(点击展开/收起)
+            </button>
+				<div class="staff-content show" style="text-align:left;">
+			
+				<div class="cd-code-content">
+					<li>由于从kirikiri2移植到kirikiriz时一些兼容性问题导致游戏内的底下菜单无法完全使用。这是因为在KRZ中，删除了对应的菜单类，导致所有需要跳转到其他页面的功能均无法使用。（这就是为什么只有“AUTO”和“SKIP”可以正常使用的原因。）</li>
+					<li>而本游戏在原作中正是使用的此类元素，如果需要适配KRZ，那么我将必须对源代码大动干戈，这也是我不愿意看到的局面。我在所有的改动中，在保证能完整运行的情况下，都是尽可能少的去改动原有的代码，新增的功能也大多都是使用新的文件去实现</li>
+					<h4>参考文献:</h4>
+					<li>kirikiriz的官方说明网页：<a href="https://krkrz.github.io/updatefromkr2.html" target="_blank">https://krkrz.github.io/updatefromkr2.html</a></li>
+					<li>kirikiriz的readme手册：<a href="http://krkrz.github.io/" target="_blank">http://krkrz.github.io/</a></li>
+					<li>以及一个其他人移植中说明：<a href="https://www.kaede-software.com/2013/05/post_617.html" target="_blank">https://www.kaede-software.com/2013/05/post_617.html</a></li>
+					<li>在KRZ的官方网页中，对menu类说明原文如下：</li>
+					<p>Menu クラスをプラグインに変更。<br />
+                     Menu を非推奨とするにあたり、プラグインに移動した。<br />
+                     今後メニューを使わない実装にすることを推奨。</p>
+					 <li>机器翻译：</li>
+					 <p>Menu 将类更改为插件。 <br />
+Menu 将条目添加到文档注册表。 <br />
+建议今后不使用菜单进行安装。</p>
+					 <li>在另一位移植者的文档中，有着更详细的说明，以下是原文：</li>
+					 <p>コアからメニュー機能を削除し、プラグインに移動した。<br />
+ゲームではメニューは非推奨機能となって、主にツール用途で使われることを想定している。<br />
+吉里吉里2 のゲームを Windows8 タブレットなどタッチデバイスでプレイする時、フルスクリーンでプレイすることになると思うが、その場合メニューは使えなくなる。<br />
+使えないことはないが、画面上端ギリギリをうまくタップしないとメニューを出せない。<br />
+今後 Windows8 タブレットがある程度普及することを考えるとゲームで標準のメニューは使いづらく、代替策を用意する必要がある。<br />
+ゲーム中でメニューに相当する機能を組み込むことになると思う。<br />
+吉里吉里Z は、これをほぼ強制することになる。<br />
+プラグイン化したメニュー機能はフルスクリーン時使えない。<br />
+<br />
+その他仕様の差異は、ショートカットキーの文字列が API の GetKeyNameText で得られるもの準拠となったので、BkSp が Backspace に変わっている。<br />
+吉里吉里2のドキュメントで例に上がっているものでは変わらないはず。<br />
+実際に使えるキーの文字列は、menu プラグインの readme.txt にリストアップした。<br />
+ショートカットキーで機能するかどうかについてはまだ未調査。<br />
+後、内部処理的なイベントが InputEvent から通常の Event になったので若干タイミングが変わるケースが存在するかもしれない。<br />
+仕様の違いはこの3点のはず。<br />
+他に違いがあればそれは不具合か、認識漏れ。<br />
+<br />
+メニュープラグインは、プラグインをロードすれば以前と同じように使えるので、基本的にロードメソッドコールの1行で互換になる(上述の変更点除く)。</p>
+
+<li>机器翻译：</li>
+<p>已从核心中删除菜单功能并将其移到插件中。<br />
+在游戏中，菜单成为非推荐功能，主要设想在工具用途中使用。<br />
+吉里吉里2的游戏Windows8 我想在平板电脑等触摸设备上玩的时候，会在全屏上玩，但是这种情况下菜单就不能使用了。<br />
+虽然不是不能使用，但是如果不很好地点击画面上端的话就不能拿出菜单。<br />
+今后Windows8 考虑到平板电脑在某种程度上的普及，游戏中标准的菜单很难使用，需要准备替代方案。<br />
+我想在游戏中编入相当于菜单的功能。<br />
+吉里吉里Z 这几乎是强制的。<br />
+插件化的菜单功能在全屏时不能使用。<br />
+<br />
+其他规格的差异在于，快捷键的字符串API 的，之GetKeyNameText 中得到的东西是基准的BkSp 的Backspace 变成了。<br />
+吉里吉里2的文档中提到的应该不会改变。<br />
+实际使用的键的字符串menu 插件readme.txt 的明细栏样式中定义的设置。<br />
+还未调查快捷键是否起作用。<br />
+之后，内部处理的事件InputEvent 通常的Event 因此，可能会存在时机稍有变化的情况。<br />
+规格的不同应该是这三点。<br />
+如果有其他不同的话，那是故障吗，认识遗漏。<br />
+<br />
+菜单插件在加载插件后可以和以前一样使用，所以基本上在加载方法调用的一行中兼容（上述变更点除外）。</p>
+<li>以及最重要的，在kirikiriz的官方readme文档中，有那么一句话说明：</li>
+<p>PassThroughDrawDevice は削除されているので、使用している箇所は書き換えが必要です。(机器翻译：PassThroughDrawDevice 被删除了，所以使用的地方需要改写。)<br />
+不巧的是，对应功能正好有此函数声明。几乎是被KRZ指名道姓的枪毙了，在实际上做兼容补丁时，我必须将这一段代码注释掉，否则游戏会崩溃无法运行。</p>
+<p>这是一段有关修改后的tjs代码：<br />
+var win = global.kag;<br />
+	if (win === void || !isvalid win ||<br />
+		typeof win.dispDoubleBufferMenu == "undefined") return;<br />
+	var menu = win.dispDoubleBufferMenu;<br />
+	var tag;<br />
+<br />
+	 /*脚本访问 drawer 会炸<br />
+	with (global.Window.PassThroughDrawDevice) switch (win.drawDevice.drawer) {<br />
+	case .dtDrawDib: tag = "[DIB]";        break;<br />
+	case .dtDBGDI:   tag = "[GDI]";        break;<br />
+	case .dtDBDD:    tag = "[DirectDraw]"; break;<br />
+	case .dtDBD3D:   tag = "[Direct3D]";   break;<br />
+	}<br />
+	*/<br />
+	tag = "";   //避免访问 drawer</p>
+	<li>以上说明实际上只是我目前遇到问题的冰山一角，更多的代码以及其他方面的情况不再详细赘述。</li>
+				</div>
+			</div>
+			</div>
+
+			<div class="staff-section">
+				<button class="toggle-button" onclick="toggleStaff()">工作人员名单(日语)(点击展开/收起)</button>
+				<div class="staff-content" id="staffContent">
+					<p>备注：由于编码问题，显示不了标准的日汉字，并非打错字</p>
+					<div class="staff-title" style="font-size:2rem; margin-bottom:10px;">少女神域∽少女天獄 -The Garden of Fifth Zoa-</div>
+					<div style="color:#ff69b4; font-size:1.3rem; font-weight:bold; margin-bottom:15px;">制作组名单</div>
+					<div class="staff-subtitle">CAST</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（配音演员表）</div>
+					<div class="staff-name">澳城迪希 ：桃山いおん</div>
+					<div class="staff-name">壟峯碧織 ：夏野こおり</div>
+					<div class="staff-name">道陵愛莉 ：水無月かなで</div>
+					<div class="staff-name">稜祁祥娜 ：雪都さお梨</div>
+					<div class="staff-name">広原菩乃花 ：田中理々</div>
+					<div class="staff-name">綱坂葵 ：金松由花</div>
+					<div class="staff-name">水原融 ：マーガリン天狗</div>
+					<div class="staff-name">澳城広常 ：蓮岳犬</div>
+					<div class="staff-name">澳城小町 ：天乃そら</div>
+					<div class="staff-name">壟峯時子 ：小岩井美都</div>
+					<div class="staff-name">壟峯胤正 ：北条賢</div>
+					<div class="staff-name">道陵得子 ：成宮水彩</div>
+					<div class="staff-name">道陵義明 ：関エイジ</div>
+					<div style="color:#ff69b4; font-size:1rem; font-weight:bold; margin-bottom:15px;">モブキャラくたー</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（群众角色）</div>
+					<div class="staff-name">　　　　　吉祥武史</div>
+					<div class="staff-name">　　　　　佐藤勝利</div>
+					<div class="staff-name">　　　　　大和撫子</div>
+					<div class="staff-name">　　　　　笆木一馬</div>
+					<div class="staff-name">　　　　　　童真桉</div>
+					<div class="staff-name">　　　　　育藤勝利</div>
+					<div class="staff-name">　　　　　如月将輝</div>
+					<div class="staff-name">　　　　　星井琉奈</div>
+					<div class="staff-name">　　　　　伊集院翔</div>
+					<div class="staff-subtitle">シナリオ原案</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（故事原案）</div>
+					<div class="staff-name">獅子雰麓</div>
+					<div class="staff-subtitle">シナリオ</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（剧本）</div>
+					<div class="staff-name">LEGIOん</div>
+					<div class="staff-name">獅子雰麓</div>
+					<div class="staff-name">剣技マナ</div>
+					<div class="staff-subtitle">原画·キャラデザイン</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（原画·角色设计）</div>
+					<div class="staff-name">早川ハルイ</div>
+					<div class="staff-name">よう太</div>
+					<div class="staff-name">石井久雄</div>
+					<div class="staff-name">森山しじみ</div>
+					<div class="staff-subtitle">CGグラフィック</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（计算机/CG图形）</div>
+					<div class="staff-name">勇侍</div>
+					<div class="staff-name">あなぐま聖人</div>
+					<div class="staff-name">さようすけ</div>
+					<div class="staff-name">風</div>
+					<div class="staff-name">手塚忍</div>
+					<div class="staff-name">天乃アト（すたじお緑茶）</div>
+					<div class="staff-name">なすとらっぷ</div>
+					<div class="staff-name">garnet（シカタ　ケンタ）</div>
+					<div class="staff-name">鈴木屋16号店(株式会社クリエンタ）</div>
+					<div class="staff-name">やなちぃ(株式会社クリエンタ）</div>
+					<div class="staff-name">有限会社クアードラ</div>
+					<div class="staff-subtitle">背景</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（背景）</div>
+					<div class="staff-name">BoCuden</div>
+					<div class="staff-name">kemprate</div>
+					<div class="staff-name">中野弥生</div>
+					<div class="staff-name">巴渡城</div>
+					<div class="staff-name">鬼瓦太</div>
+					<div class="staff-name">花屋敷波子</div>
+					<div class="staff-subtitle">プログラム</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（程序）</div>
+					<div class="staff-name">合資会社ワムソフト</div>
+					<div class="staff-subtitle">スクリプト</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（脚本）</div>
+					<div class="staff-name">こねくとうぃざーど　かぴぱらさんちーむ</div>
+					<div class="staff-name">高見</div>
+					<div class="staff-name">雨乃神樣</div>
+					<div class="staff-name">安中なるな</div>
+					<div class="staff-name">fukki</div>
+					<div class="staff-name">TOC</div>
+					<div class="staff-name">山口賢治（アエケン）</div>
+					<div class="staff-name">みきてぃ～の中の人</div>
+					<div class="staff-name">剣技マナ</div>
+					<div class="staff-subtitle">音樂</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（音乐）</div>
+					<div class="staff-name">坂本昌一郎</div>
+					<div class="staff-subtitle">SE</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（音效）</div>
+					<div class="staff-name">Wavemotion Inc.</div>
+					<div class="staff-name">桑原秀綱</div>
+					<div class="staff-name">村田桃子</div>
+					<div class="staff-name">島田和行</div>
+					<div class="staff-subtitle">音響制作</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（音响制作）</div>
+					<div class="staff-name">株式会社MAGES.</div>
+					<div class="staff-subtitle">制作人</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（制作人）</div>
+					<div class="staff-name">富士丸翔</div>
+					<div class="staff-name">澁木千乃</div>
+					<div class="staff-name">管紗佑里</div>
+					<div class="staff-subtitle">音響監督</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（音响监督）</div>
+					<div class="staff-name">海沢剛</div>
+					<div class="staff-subtitle">音声収録スタジオ</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（录音室）</div>
+					<div class="staff-name">株式会社アブソリュート　スタジオ</div>
+					<div class="staff-subtitle">音声収録エンジニア</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（录音工程师）</div>
+					<div class="staff-name">德永宏</div>
+					<div class="staff-name">竹原具隆</div>
+					<div class="staff-subtitle">OPテーマ/EDテーマ/グランドEDテーマ曲楽制作</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（片头曲/片尾曲/Grand片尾曲乐曲制作）</div>
+					<div class="staff-name">5pb.Records</div>
+					<div class="staff-subtitle">サウンドプロデューサー</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（声音监制）</div>
+					<div class="staff-name">富士丸翔</div>
+					<div class="staff-subtitle">オープニングテーマ</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（片头主题曲）</div>
+					<div class="staff-name">「キミ～ツナグ」</div>
+					<div class="staff-name">Vo.marina</div>
+					<div class="staff-name">作詞：Tama'69　作曲：西隆彰　編曲：尾澤拓実</div>
+					<div class="staff-subtitle">エンディングテーマ</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（片尾主题曲）</div>
+					<div class="staff-name">「永久より永遠に」</div>
+					<div class="staff-name">Vo. marina</div>
+					<div class="staff-name">作詞：Urachisa　作曲：森本貴大　編曲：noise pollution</div>
+					<div class="staff-subtitle">グランドエンディングテーマ</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（Grand片尾主题曲）</div>
+					<div class="staff-name">「punitive justice~千年の錯綜~」</div>
+					<div class="staff-name">Vo.彩音</div>
+					<div class="staff-name">作詞：彩音　作曲/編曲：姉川史</div>
+					<div class="staff-subtitle">ムービー制作</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（影片制作）</div>
+					<div class="staff-name">tatsumi(gram6design)</div>
+					<div class="staff-name">makoto(gram6design)</div>
+					<div class="staff-subtitle">WEBデザイン</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（网页设计）</div>
+					<div class="staff-name">裏葉(とらいあんぐる！)</div>
+					<div class="staff-subtitle">UIデザイン</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（用户界面设计）</div>
+					<div class="staff-name">isumi</div>
+					<div class="staff-subtitle">パッケージデザイン</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（包装设计）</div>
+					<div class="staff-name">井出寛治朗</div>
+					<div class="staff-subtitle">協力</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（协助）</div>
+					<div class="staff-name">武蔵野司</div>
+					<div class="staff-name">minori</div>
+					<div class="staff-name">酒井信和</div>
+					<div class="staff-name">姿月景</div>
+					<div class="staff-name">株式会社ラッセル</div>
+					<div class="staff-subtitle">営業·広報</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（营业·宣传）</div>
+					<div class="staff-name">剣技マナ</div>
+					<div class="staff-subtitle">デバッグ</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（调试）</div>
+					<div class="staff-name">Lassオールスタッフ</div>
+					<div class="staff-subtitle">スペシャルサンクス</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（特别鸣谢）</div>
+					<div class="staff-name">丸山七濑</div>
+					<div class="staff-name">黑田正人</div>
+					<div class="staff-name">A')美しき魔闘家ウエケン</div>
+					<div class="staff-subtitle">進行</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（制作进行）</div>
+					<div class="staff-name">剣技マナ</div>
+					<div class="staff-name">しんぺえ？</div>
+					<div class="staff-subtitle">企画·制作</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（策划·制作）</div>
+					<div class="staff-name">Lass</div>
+					<div class="staff-subtitle">プロデューサー</div>
+					<div style="color:#ff69b4; font-size:0.95rem; font-weight:bold; margin-bottom:15px;">（监制）</div>
+					<div class="staff-name">剣技マナ</div>
+				</div>
+			</div>
+
+            <div class="footer-box">
+				<p>&copy; 2011-2018 Lass版权所有 | &copy; 2018-2025 DMM版权所有</p>
+				<p>html程序/游戏移植者：<a href="https://space.bilibili.com/87412647?spm_id_from=333.1007.0.0" target="_blank">bilibili月が綺麗ですね_</a></p>
+				<a href="https://web.archive.org/web/20180601000000*/lass.jp" target="_blank">原lass历史官网快照</a> |
+				<a href="https://dlsoft.dmm.co.jp/detail/russ_0144/?i3_ref=search&i3_ord=1" target="_blank">正版购买链接</a>
+				<p>本移植版仅供学习交流，请支持正版游戏。官网快照和正版购买需要VPN</p>
+            </div>
+		</div>
+		
+		<button id="backToTopBtn">回到顶部</button>
+
+		<script>
+			function toggleStaff() {
+				const staffContent = document.getElementById('staffContent');
+				staffContent.classList.toggle('show');
+			}
+			const backToTopBtn = document.getElementById('backToTopBtn');
+			
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 200) {
+					backToTopBtn.style.display = 'block';
+				} else {
+					backToTopBtn.style.display = 'none';
+				}
+			});
+			
+			backToTopBtn.addEventListener('click', () => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+		</script>
+	</body>
+</html>
